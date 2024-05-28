@@ -1,0 +1,879 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{blindtext}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+\begin{document}
+\begin{multicols*}{3}
+\section*{Sequences}
+
+\textbf{Convergence}\\ 
+For $\left(x_n\right)\in\mathbb{R}$. $x_n \rightarrow a\in\mathbb{R}$ if $\forall\varepsilon>0$ $\exists N \in \mathbb{N}$ such that
+$$
+n \geq N \quad \implies \quad\left|x_n-a\right|<\varepsilon .
+$$
+- Every convergent sequence is bounded. 
+
+\textbf{Cauchy Convergence}\\
+$\left(x_n\right)\in \mathbb{R}$ is Cauchy if $\forall\varepsilon>0$ $\exists N \in \mathbb{N}$ such that
+$$
+\left|x_n-x_m\right|<\varepsilon \quad \text { for all } n, m \geq N \text {. }
+$$
+
+\textbf{Cauchy Theorem}\\
+$\left(x_n\right)$ is Cauchy $\iff$  $\left(x_n\right)$ is convergent.
+
+\textbf{Triangle Inequality}
+$$|x+y|\leq|x|+|y|$$
+$$|x-y|\geq \left| |x|-|y| \right|$$
+$$|x-y|\leq|x-z|+|y-z|$$
+
+\textbf{Subsequences}\\
+A subsequence of $\left(x_n\right)$ is a sequence $\left(x_{n_k}\right)_{k \in \mathbb{N}}$ which is a selection of some (possibly all) of the $x_n$ 's taken in order.
+
+\textbf{Bolzano-Weierstrass}\\
+Every bounded $(x_n)\in\mathbb{R}$ has a convergent subsequence. 
+
+\textbf{limsup liminf} \\
+If $\left(x_n\right)\in\mathbb{R}$ is bounded: 
+\begin{align*}
+\limsup _{n \rightarrow \infty} x_n &= \lim _{n \rightarrow \infty}\left(\sup _{k \geq n} x_k\right), \\
+\liminf _{n \rightarrow \infty} x_n &= \lim _{n \rightarrow \infty}\left(\inf _{k \geq n} x_k\right) .
+\end{align*}
+also
+$$
+\limsup _{n \rightarrow \infty} x_n=\liminf _{n \rightarrow \infty} x_n  = L \implies (x_n)\rightarrow L
+$$
+
+\textbf{Monotone Convergence Theorem} \\
+For $\left(x_n\right)\in\mathbb{R}$\\
+monotone increasing and bounded above:\\
+$\implies\lim _{n \rightarrow \infty} x_n=\sup _{n \geq 1} x_n$\\
+monotone decreasing and bounded below: \\
+$\implies\lim _{n \rightarrow \infty} x_n=\inf _{n \geq 1} x_n$
+
+\section*{Series}
+
+Let $S=\sum_{k=1}^{\infty} a_k$, the partial sum is 
+$$
+s_n=\sum_{k=1}^n a_k .
+$$
+$S$ converges if and only if $\left(s_n\right)$ converges where
+$$
+\sum_{k=1}^{\infty} a_k=\lim_{n\rightarrow\infty}s_n
+$$
+$S$ is absolutely convergent if $\sum_{k=1}^{\infty}\left|a_k\right|$ is convergent, otherwise $S$ is just conditionally convergent.\\
+
+\textbf{Cauchy criterion for series}\\
+Let $S=\sum_{k=1}^{\infty} a_k$. 
+
+$S$ is convergent if and only if $\forall\varepsilon>0$, $\exists N$ 
+$$
+m \geq n \geq N \implies \left|\sum_{k=n+1}^m a_k\right|<\varepsilon
+$$
+
+\textbf{Absolute Convergence} \\
+Let $S=\sum_{k=1}^{\infty} a_k$ be absolutely convergent:\\ 
+(a) The series $S$ is convergent.\\
+(b) (Rearrangement) Let $z: \mathbb{N} \rightarrow \mathbb{N}$ be a bijection. Then the series $\sum_{k=1}^{\infty} a_{z(k)}$ is convergent and
+$$
+\sum_{k=1}^{\infty} a_k=\sum_{k=1}^{\infty} a_{z(k)}
+$$
+
+\textbf{Conditional Convergence} \\
+Let $S=\sum_{k=1}^{\infty} a_k$ be conditionally convergent. There exist rearrangements $z: \mathbb{N} \rightarrow \mathbb{N}$ (where $z$ is a bijection) such that for $S_z= \sum_{k=1}^{\infty} a_{z(k)}$\\
+(a) $S_z=r \in \mathbb{R}$ for any $r$. \\
+(b) $S_z$ diverges to $+\infty$.\\
+(c) $S_z$ diverges to $-\infty$.\\
+(d) The partial sums of $S_z$ oscillate between any two real numbers.\\
+
+\textbf{Ratio Test}\\
+Let $S=\left(r_n\right)$. $S$ converges if and only if
+$$\lim _{n \rightarrow \infty}\left|a_{n+1} / a_n\right|<1$$
+
+\section*{Continuous Functions}
+
+\textbf{Continuity} \\
+For $D=dom(f)\subset\mathbb{R}$ let $f: D \rightarrow \mathbb{R}$.\\
+$f$ is continuous at $a \in D$ if and only if\\
+
+$\exists\left(x_n\right)\in D$ such that
+$$\lim _{n \rightarrow \infty} x_n= a\implies\lim _{n \rightarrow \infty} f\left(x_n\right)=f(a)$$
+$${AND/OR}$$
+$\forall\varepsilon>0$,  $\exists \delta>0$ such that 
+$$|x-a|<\delta \implies |f(x)-f(a)|<\epsilon$$
+
+\textbf{Uniform Continuity} \\
+Let $I\subset \mathbb{R}$ be an \textit{interval} and $f: I \rightarrow \mathbb{R}$.\\
+$f$ is uniformly continuous on $I$ if $\forall\epsilon>0$, $\exists\delta>0$ such that for $x, y \in I$
+$$|x-y|<\delta\implies |f(x)-f(y)|<\epsilon$$
+
+\textbf{Prooving Uniform Continuity}
+\begin{itemize}[label=\textbullet, labelsep=0.3em, leftmargin=1em]
+\item Any $f$ defined on a closed interval is uniformly continuous if it is continuous.
+\item If $I$ is an open interval, $f$ is differentiable on $I$ and $f^{\prime}$ is bounded, then $f$ is uniformly continuous.
+\item If $I$ is any interval, $f$ is uniformly continuous on $I$ if and only if whenever $s_n, t_n \in I$ are such that $\left|s_n-t_n\right| \rightarrow 0$, then $\left|f\left(s_n\right)-f\left(t_n\right)\right| \rightarrow 0$.
+\end{itemize}
+
+
+\textbf{Combining Continuous Functions}\\
+Let $f, g: D \rightarrow \mathbb{R}$ be continuous on $D$, and let $\alpha \in \mathbb{R}$ then $\alpha f$, $f+g$, $f g$, $f\circ g$ are continuous on $D$.
+
+\textbf{Mean Value Theorem}\\	
+If $f$ is continuous on $[a, b]$ and differentiable on $(a, b)$, then $\exists c\in(a, b)$ such that 
+$$
+(b-a)f^{\prime}(c)=f(b)-f(a)
+$$
+\\
+
+\textbf{Intermediate Value Theorem} \\
+Let $f:[a, b] \rightarrow \mathbb{R}$ be continuous on $[a, b]$. \\
+$$f(a) f(b)<0\implies\exists c \in(a, b) : f(c)=0$$
+
+\textbf{Extreme value theorem}\\ 
+Let $f:[a, b] \rightarrow \mathbb{R}$ be continuous on $[a, b]$. \\
+$f$ is \textit{bounded} on $[a,b]$ and $\exists c, d \in[a, b]$ such that
+$$
+\begin{aligned}
+f(c)&=\inf_x f(x)\\
+f(d)&=\sup_x f(x)
+\end{aligned}
+$$
+
+\section*{Sequences of Functions}
+
+\textbf{Pointwise Convergence}\\
+Let $E$ be a nonempty subset of $\mathbb{R}$. \\
+$f_n: E\rightarrow\mathbb{R}$ converges pointwise on $E$
+if and only if $\forall\epsilon>0$, some $x\in E$ and $\exists N\in\mathbb{N}$ such that$$n\geq N \implies |f_n(x)-f(x)|<\epsilon.$$
+The limit function does not have to be the same for all $x$.\\
+If $f_n$ is continuous/differentiable/integrable the pointwise limit is not necessarily continuous/differentiable/integrable.\\
+
+\textbf{Uniform Convergence}\\
+Let $E$ be a nonempty subset of $\mathbb{R}$. \\
+$f_n: E \rightarrow \mathbb{R}$ converges uniformly on $E$ to a function $f$ 
+if and only if $\forall\varepsilon>0$, $\exists N \in \mathbb{N}$ such that
+$$
+n \geq N \quad \implies \quad\left|f_n(x)-f(x)\right|<\varepsilon
+$$
+for all $x \in E$. $f(x)$ is the same for all $x$.\\
+\textit{Equivalently}\\
+- $\sup _{x \in E}\left|f_n(x)-f(x)\right| \rightarrow 0$ as $n \rightarrow \infty$.\\
+- There exists a sequence $a_n \rightarrow 0$ such that $\left|f_n(x)-f(x)\right| \leq a_n$ for all $x \in E$.
+
+If $f$ is uniformly convergent only for $x\in[a,b]$, we can write $\mathbb{R}=\bigcup_{n=1}^{\infty}[-n, n]$ and we have that $f$ is pointwise convergent on $\mathbb{R}$.  
+
+\textbf{Unif. Conv. $\implies$ Continuity}\\
+If $f_n\rightarrow f$ uniformly on $E$ and each $f_n$ is continuous at some $x_0 \in E$, then $f$ is continuous at $x_0$.
+
+\textbf{Unif. Conv. $\implies$ Integrable Limits}\\
+Suppose that $f_n \rightarrow f$ uniformly on a closed interval $[a, b]$. 
+If each $f_n$ is integrable on $[a, b]$, then so is $f$ and
+$$
+\lim _{n \rightarrow \infty} \int_a^b f_n(x) d x=\int_a^b\left(\lim _{n \rightarrow \infty} f_n(x)\right) d x .
+$$
+And 
+$$\int_a^x f_n(t) d t\rightarrow\int_a^x f(t) d t$$
+uniformly for $x \in[a, b]$.
+
+\textbf{Unif. Conv. and Derivative of Limit}\\
+Let each $f_n$ converge at some $x_0 \in(a, b)$ and be differentiable on $(a, b)$.\\ 
+If $f_n^{\prime}$ converges uniformly on $(a, b)$ then $f_n$ converges uniformly on $(a, b)$ and
+$$
+\lim _{n \rightarrow \infty} f_n^{\prime}(x)=\left(\lim _{n \rightarrow \infty} f_n(x)\right)^{\prime}
+$$
+for each $x \in(a, b)$.
+
+\section*{Series of Functions}
+
+\textbf{Convergence of Series of Functions}\\
+Let $f_k$ be a sequence of real functions defined on some set $E$ 
+$$
+s_n(x)=\sum_{k=1}^n f_k(x), \quad x \in E, n \in \mathbb{N} .
+$$
+1. The series $\sum_{k=1}^{\infty} f_k$ is said to converge pointwise if and only if the sequence $s_n(x)$ converges pointwise on $E$ \\
+2. The series $\sum_{k=1}^{\infty} f_k$ is said to converge uniformly if and only if the sequence $s_n(x)$ converges uniformly on $E$\\ 
+3. The series $\sum_{k=1}^{\infty} f_k$ is said to converge absolutely (pointwise) on $E$ if and only if $\sum_{k=1}^{\infty}\left|f_k(x)\right|$ converges for each $x \in E$.\\
+
+\textbf{Continuity of Limits of Series}\\
+Suppose that $x_0 \in E$ and that each $f_k$ is continuous at $x_0 \in E$. \\
+If $f=\sum_{k=1}^{\infty} f_k$ converges uniformly on $E$, then $f$ is continuous at $x_0 \in E$.\\
+
+\textbf{Term-by-term Integration}\\
+If $f_k$ is integrable on a closed interval $[a,b]$ and $f=\sum_{k=1}^{\infty} f_k$ converges uniformly (i.e. is continuous) on $[a, b]$, \\
+then $f$ is integrable on $[a, b]$ and
+$$
+\int_a^b \sum_{k=1}^{\infty} f_k(x) d x=\sum_{k=1}^{\infty} \int_a^b f_k(x) d x .
+$$
+
+\textbf{Term-by-term Differentiation}\\
+Suppose that $E$ is and open interval. If:\\
+- each $f_k$ is differentiable on $E$. \\
+- $\sum_{k=1}^{\infty} f_k\left(x_0\right)$ converges at some $x_0 \in E$,\\
+- $g=\sum_{k=1}^{\infty} f_k^{\prime}$ converges uniformly on $E$, \\
+then $f=\sum_{k=1}^{\infty} f_k$ converges uniformly on $E$, is differentiable on $E$, and
+$$
+f^{\prime}(x)=\left(\sum_{k=1}^{\infty} f_k(x)\right)^{\prime}=\sum_{k=1}^{\infty} f_k^{\prime}(x)=g(x)
+$$
+for $x \in E$. \\
+
+\textbf{Weierstrass M-Test}\\
+Let $E$ be a nonempty subset of $\mathbb{R}$ and $f_k: E \rightarrow \mathbb{R}$.\\
+$$\sum_{k=1}^{\infty} M_k<\infty \text{ and } \left|f_k(x)\right| \leq M_k$$
+Then $f=\sum_{k=1}^{\infty} f_k$ converges absolutely and uniformly on $E$.
+
+\section*{Power Series}
+
+Let $\left(a_n\right)\in\mathbb{R}$ and $c \in \mathbb{R}$. 
+$$
+\sum_{n=0}^{\infty} a_n(x-c)^n
+$$
+is a power series.\\
+Often $c=0$.
+The series will always converge to $x$ when $x=c$. 
+
+\textbf{Radius of Convergence}\\
+The radius of convergence, $R$, determines the interval around $c$ where the power series converges. \\
+Power series converge absolutely within $R$, but convergence at the boundary points $(c \pm R)$ must be checked separately.\\
+\textit{To calculate $R$:}\\
+- Ratio Test: \\
+$L=\lim _{n \rightarrow \infty}\left|\frac{a_{n+1}}{a_n}\right|$\\
+The radius of convergence is $R=\frac{1}{L}$. If $L=0$, the radius is infinite (the series converges everywhere). If $L=\infty$, the radius is zero (it converges only at $c$ ).\\
+- Root Test: \\
+$R=\frac{1}{\lim \sup _{n \rightarrow \infty}\left|a_n\right|^{1 / n}}$\\
+A special case of a power series is the geometric series, where $c=0$ and $a_n=r^n$. It converges when $|r|<1$ and 
+$$\sum_{n=0}^{\infty} a r^n = \frac{a}{1-r}$$
+
+\textbf{Continuity of Power Series}\\
+Let $R>0$ and $0<r<R$. \\
+A power series converges uniformly and absolutely on $|x-c| \leq r$ to a continuous function $f$. Hence
+$$
+f(x)=\sum_{n=0}^{\infty} a_n(x-c)^n
+$$
+Is continuous on $(c-R, c+R)$.
+
+\textbf{Differentiability of Power Series}\\
+$$
+f(x)=\sum_{n=0}^{\infty} a_n(x-c)^n
+$$
+is infinitely differentiable on $|x-c|<R$, and for such $x$,
+$$
+f^{\prime}(x)=\sum_{n=0}^{\infty} n a_n(x-c)^{n-1}
+$$
+The series converges absolutely and uniformly on $[c-r, c+r]$ for any $r<R$. Moreover
+$$
+a_n=\frac{f^{(n)}(c)}{n !} .
+$$
+$f'(x)$ has the same $R$ as $f(x)$.
+
+
+\section*{Step Functions}
+
+$\phi: \mathbb{R} \rightarrow \mathbb{R}$ is a step function if there exist real numbers $x_0<x_1<$ $\cdots<x_n$ such that\\
+$$
+\phi(x)=\sum_{j=1}^n c_j \chi_{\left(x_{j-1}, x_j\right)}(x)
+$$
+$$
+\int \phi:=\sum_{j=1}^n c_j\left(x_j-x_{j-1}\right) .
+$$
+
+\section*{Lebesgue Integrals}
+A function $f: I \rightarrow \mathbb{R}$ is Lebesgue integrable on an interval $I$ if there exist numbers $c_j$ and bounded intervals such that
+$$
+\sum_{j=1}^{\infty}\left|c_j\right| \lambda\left(J_j\right)<\infty
+$$
+(i.e. the sum is absolutely convergent) 
+$$
+f(x)=\sum_{j=1}^{\infty} c_j \chi_{J_j}(x)
+$$
+for all $x \in I$ at which
+$$
+\sum_{j=1}^{\infty}\left|c_j\right| \chi_{J_j}(x)<\infty
+$$
+We denote by $\int_I f$ the number
+$$
+\int_I f=\sum_{j=1}^{\infty} c_j \lambda\left(J_j\right)
+$$
+
+\textbf{Prooving Integrability}
+\begin{itemize}[label=\textbullet, labelsep=0.3em, leftmargin=1em]
+	\item $f$ is continuous on $[a,b]$ $\implies$ $f$ is integrable on $[a,b]$.
+\item $g$ is integrable on $[0, \infty)$ if and only if $g$ is integrable on $[0, v)$ for all $v<\infty$ and
+$$
+\sup _{v>0} \int_0^v|g(x)| d x<\infty
+$$
+\item $f$ be a measurable function on $I$ and assume that $|f(x)| \leq g(x)$ for almost every $x \in I$, where $g$ is an integrable function on $I$. Then $f$ is integrable on $I$.
+\end{itemize}
+
+\textbf{Properties of Lebesgue Integral}\\
+Suppose $f$ and $g$ are Lebesgue integrable on $I$ and $\alpha,\beta\in\mathbb{R}$\\
+(a) $\alpha f+\beta g$ is integrable on I and
+$$
+\int_I(\alpha f+\beta g)=\alpha \int_I f+\beta \int_I g .
+$$
+(b) If $f \geq 0$ on $I$ then $\int_I f \geq 0$; if $f \geq g$ on $I$ then $\int_I f \geq \int_I g$.\\
+(c) $|f|$ is integrable on $I$ and $\left|\int_I f\right| \leq \int_I|f|$.\\
+(d) $\max \{f, g\}$ and $\min \{f, g\}$ are integrable on I.\\
+(e) If one of the functions is bounded then the product $f g$ is integrable on I.\\
+(f) If $f \geq 0$ with $\int_I f=0$ then any function $h$ such that $0 \leq h \leq f$ on $I$ is integrable on $I$.
+
+\textbf{Integration on a Sub-Interval}\\
+Let $I$ and $J$ be two intervals such that $J \subset I$.\\
+(a) If $f$ is integrable on $I$ then $f$ is also integrable on the subinterval $J$.\\
+(b) If $f$ is integrable on $J$ and simultaneously $f(x)=0$ for all $x \in I \backslash J$ then $f$ is integrable on $I$ and
+$$
+\int_J f=\int_I f
+$$
+(c) If $f$ is integrable on $I$ and $f(x) \geq 0$ for all $x \in I$ then
+$$
+\int_J f \leq \int_I f .
+$$
+(d) Suppose that I can be written as the union of disjoint intervals $I_n, n=1,2,3, \ldots$ and let $f$ be integrable on each of the intervals $I_n$. Then $f$ is integrable on $I$ if and only if
+$$
+\sum_{n=1}^{\infty} \int_{I_n}|f|<\infty .
+$$
+If this holds then
+$$
+\int_I f=\sum_{n=1}^{\infty} \int_{I_n} f .
+$$
+
+\textbf{Adding Integrals on a Sub-Interval}\\
+If any two of these integrals
+$$
+\int_a^b f, \quad \int_b^c f, \quad \int_a^c f,
+$$
+exist then so does the third and
+$$
+\int_a^b f+\int_b^c f=\int_a^c f
+$$
+must hold.
+
+
+\section*{Integrating Infinite Series}
+Suppose that $\left(f_n\right)_{n \in \mathbb{N}}$ is a sequence of functions each of which is integrable on $I$.
+(a) Assume that
+$$
+\sum_{n=1}^{\infty} \int_I\left|f_n\right|<\infty .
+$$
+
+Let $f$ be a function on the interval I such that
+$$
+f(x)=\sum_{n=1}^{\infty} f_n(x) \quad \text { for all } x \in I $$
+such that $\sum_{n=1}^{\infty}\left|f_n(x)\right|<\infty$
+
+Then $f$ is integrable on $I$ and its integral on I equals to
+$$
+\int_I f=\sum_{n=1}^{\infty} \int_I f_n
+$$
+(b) Assume that each $f_n \geq 0$ on $I$ and let $f(x)=\sum_{n=1}^{\infty} f_n(x)$ for all $x \in I$ (we allow for the possibility that at some points this sum is infinite). Then $f$ is integrable on $I$ if and only if
+$$
+\sum_{n=1}^{\infty} \int_I f_n<\infty
+$$
+
+\textbf{Monotone Convergence Theorem (Integrals)}\\
+Suppose that $\left(f_n\right)$ is a monotone nondecreasing sequence of integrable functions on an interval $I$. That is $f_1(x) \leq f_2(x) \leq f_3(x) \leq \ldots$ for all $x \in I$. For all $x \in I$ let
+$$
+f(x)=\lim _{n \rightarrow \infty} f_n(x),
+$$
+where we allow for the possibility that at some points this limit is infinite. Then $f$ is integrable on I of and only if
+$$
+\sup _{n \in \mathbb{N}} \int_I f_n=\lim _{n \rightarrow \infty} \int_I f_n<\infty 
+$$ 
+Also: 
+$$
+\int_I f=\lim _{n \rightarrow \infty} \int_I f_n .
+$$
+
+\textbf{Fatoux Lemma}\\
+Let $\left(f_n\right)$ be a sequence of nonnegative integrable functions on an interval I. Let
+$$
+f(x)=\liminf _{n \rightarrow \infty} f_n(x), \quad \text { for all } x \in I .
+$$
+If $\liminf _{n \rightarrow \infty} \int_I f_n<\infty$ then $f$ is integrable on $I$ and
+$$
+\int_I f \leq \liminf _{n \rightarrow \infty} \int_r .
+$$
+
+\textbf{Dominated convergence theorem}\\ 
+Let $\left(f_n\right)$ be a sequence of on integrable functions on an interval $I$ and assume that
+$$
+f(x)=\lim _{n \rightarrow \infty} f_n(x), \quad \text { for all } x \in I .
+$$
+
+Assume also that the sequence $\left(f_n\right)$ is dominated by some integrable function $g$, that is
+$$
+\left|f_n(x)\right| \leq g(x), \quad \text { for all } x \in I 
+$$
+$$
+\text { and } n=1,2, \ldots, \quad \int_I g<\infty .
+$$
+
+Then the function $f$ is integrable on $I$ and
+$$
+\int_I f=\lim _{n \rightarrow \infty} \int_I f_n .
+$$
+
+\textbf{Uniform Convegrence and Integrals}\\
+Suppose $f_n:(a, b) \rightarrow \mathbb{R}$ are integrable and $f_n \rightarrow f$ uniformly. Then $f$ is integrable on $(a, b)$ and
+$$
+\int_a^b f=\lim _{n \rightarrow \infty} \int_a^b f_n
+$$
+
+\section*{Riemann Integrals}
+Let $f: [a,b] \rightarrow \mathbb{R}$. $f$ is Riemann-integrable if either
+\begin{itemize}[label=\textbullet, labelsep=0.3em, leftmargin=1em]
+\item$\forall\epsilon>0$ there exist step functions $\phi$ and $\psi$ such that
+$$
+\phi \leq f \leq \psi
+$$
+and
+$$
+\int \psi-\int \phi<\epsilon \text {. }
+$$
+
+\item $\forall\epsilon>0$ there exist $a=x_0<\cdots<x_n=b$ and $I_j = (x_{j-1}, x_j)$ such that, \\
+if $M_j$ and $m_j$ denote the supremum and infimimum values of $f$ on $I_j$, then
+$$
+\sum_{j=1}^n\left(M_j-m_j\right)\left(x_j-x_{j-1}\right)<\epsilon .
+$$
+\textit{equivelently}
+$$
+\sum_{j=1}^n \sup _{x, y \in I_j}|f(x)-f(y)| \lambda\left(I_j\right)<\epsilon
+$$
+\end{itemize}
+
+Let $g:[a, b] \rightarrow \mathbb{R}$ and $f(x)=g(x)$ for $x \in[a, b]$ and $f(x)=0$ otherwise.
+\begin{itemize}[label=\textbullet, labelsep=0.3em, leftmargin=1em]
+\item If $g$ is continuous on $[a, b]$ or $(a,b)$, then $f$ is Riemann-integrable.
+\item If $g$ is a monotone function then $f$ is Riemann-integrable.
+\end{itemize}
+
+\textbf{Riemann and Lebesgue Integrable}\\
+Let $I=(a, b)$, if there exists points $a=x_0<x_1<$ $\ldots x_n=b$ such that $f: I \rightarrow \mathbb{R}$ is bounded and continuous on each subinterval $\left(x_j, x_{j+1}\right)$. Then $f$ is both Riemann and Lebesgue integrable.
+
+\section*{FTCs}
+
+\begin{itemize}[label=\textbullet, labelsep=0.3em, leftmargin=1em]
+\item Let $g: I \rightarrow \mathbb{R}$ be integrable on an interval $I$. For all $x \in I$ and some fixed $x_0 \in I$ define
+$$
+G(x)=\int_{x_0}^x g .
+$$
+Suppose $g$ is continuous at $x$ for some $x \in I$. Then $G$ is differentiable at $x$ and $G^{\prime}(x)=g(x)$. 
+
+\item Suppose $f: I \rightarrow \mathbb{R}$ has continuous derivative $f^{\prime}$ on the interval $I$. Then $\forall a, b \in I$
+$$
+\int_a^b f^{\prime}=f(b)-f(a)
+$$
+\end{itemize}
+
+\section*{Fourier Series}
+
+\textbf{Integration on $\mathbb{C}$}\\
+Let $f=g+i h$ where $g, h:[a, b] \rightarrow \mathbb{R}$. $f$ is Lebesgue integrable if $g$ and $h$ are Lebesgue integrable and 
+$$
+\int_a^b f=\int_a^b g+i \int_a^b h
+$$
+
+\textbf{The Space $L^2$}\\
+The space $L^2=L^2([a, b])$ is the set of measurable functions $f:[a, b] \rightarrow \mathbb{C}$ so that the function $x \mapsto|f(x)|^2$ is Lebesgue integrable, i.e.
+$$
+\|f\|_2^2:=\int_a^b|f(x)|^2 d x<\infty .
+$$
+The quantity $\|f\|_2$ is called the $L^2$-norm of $f$. If $\|f\|_2=1$, then we say that $f$ is $L^2$-normalized.
+
+\textbf{Inner Product}\\
+For two functions $f, g \in L^2([a, b])$ we define their inner product by
+$$
+\langle f, g\rangle=\int_a^b f(x) \overline{g(x)} d x .
+$$
+\textit{Properties:}\\
+For $f, g, h \in L^2$ and $\lambda \in \mathbb{C}$:\\
+- Sesquilinearity:
+$$
+\begin{aligned}
+& \langle f+\lambda g, h\rangle=\langle f, h\rangle+\lambda\langle g, h\rangle, \\
+& \langle h, f+\lambda g\rangle=\langle h, f\rangle+\bar{\lambda}\langle h, g\rangle .
+\end{aligned}
+$$
+- Antisymmetry: $\langle f, g\rangle=\overline{\langle g, f\rangle}$\\
+- Positivity: $\|f\|_2^2=\langle f, f\rangle \geq 0$ (and $>0$ unless $f$ is zero almost everywhere)
+
+
+\textbf{Cauchy-Schwarz Inequality}\\
+Let $f, g \in L^2([a, b])$. Then the function $x \mapsto f(x) \overline{g(x)}$ is Lebesgue integrable and we have
+$$
+|\langle f, g\rangle| \leq\|f\|_2\|g\|_2 \text {. }
+$$
+\textbf{Minkowski’s Inequality}\\
+For $f, g \in L^2([a, b])$,
+$$
+\|f+g\|_2 \leq\|f\|_2+\|g\|_2 \text {. }
+$$
+
+\textbf{Convergence in $L^2$}\\
+Let $(f_n)\in L^2([a, b])$. 
+$f_n \rightarrow f$ in $L^2$ if 
+$$
+\left\|f_n-f\right\|_2=\left(\int_a^b\left|f_n(x)-f(x)\right|^2 d x\right)^{1 / 2}
+$$
+converges to zero. 
+
+\textbf{Orthonormal Systems}\\
+A sequence $\left(\phi_n\right)_n$ of $L^2$ functions on $[a, b]$ is called an orthonormal system on $[a, b]$ if
+\begin{align*}
+\left\langle\phi_n, \phi_m\right\rangle &= \int_a^b \phi_n(x) \overline{\phi_m(x)} d x \\
+&=\delta_{nm}= \begin{cases}
+0, & \text{if } n \neq m, \\
+1, & \text{if } n=m .
+\end{cases}
+\end{align*}
+
+\textbf{Orthogonal Projection}\\
+Let $\left(\phi_n\right)_n$ be an orthonormal system on $[a, b]$ and $f \in L^2$. Consider
+$$
+s_N(x)=\sum_{n=1}^N\left\langle f, \phi_n\right\rangle \phi_n(x) .
+$$
+
+Denote the linear span of the functions $\left(\phi_n\right)_{n=1, \ldots, N}$ by $X_N$. Then
+$$
+\left\|f-s_N\right\|_2 \leq\|f-g\|_2
+$$
+holds for all $g \in X_N$ with equality if and only if $g=s_N$.
+Hence $s_N$ is the "best $L^2$ approximation" of $f$ in $X_N$.
+
+\textbf{Bessel's Inequality}\\
+If $\left(\phi_n\right)_n$ is an orthonormal system on $[a, b]$ and $f \in L^2$, then
+$$
+\sum_n\left|\left\langle f, \phi_n\right\rangle\right|^2 \leq\|f\|_2^2
+$$
+
+\textbf{Riemann-Lebesgue lemma, $L^2$ version}\\
+Let $\left(\phi_n\right)_{n=1,2, \ldots}$ be an orthonormal system and $f \in L^2$, then
+$$
+\lim _{n \rightarrow \infty}\left\langle f, \phi_n\right\rangle=0 .
+$$
+
+\textbf{Complete Orthonormal Systems}\\
+An orthonormal system $\left(\phi_n\right)_n$ on $[a,b]$ is called complete if
+\begin{itemize}[label=\textbullet, labelsep=0.3em, leftmargin=1em]
+	\item
+$$
+\sum_n\left|\left\langle f, \phi_n\right\rangle\right|^2=\|f\|_2^2
+$$
+for all $f \in L^2$.
+
+\item \textit{Convergence Characterisation}\\
+Let $\left(s_N\right)_N$ an orthonormal projection. Then $\left(\phi_n\right)_n$ is complete if and only if $\left(s_N\right)_N$ converges to $f$ in the $L^2$-norm for every $f \in L^2$.
+
+\end{itemize}
+\textbf{Trigonometric Polynomials}\\
+A trigonometric polynomial is defined
+$$
+f(x)=\sum_{n=-N}^N c_n e^{2 \pi i n x} \quad(x \in \mathbb{R}),
+$$
+where $c_n \in \mathbb{C}$. If $c_N$ or $c_{-N}$ is non-zero, then $N$ is called the degree of $f$.
+Trigonometric polynomials are continuous functions.\\
+\textit{Properties}
+$$\text{1-periodicity: } f(x)=f(x+1)$$
+$$f(x)=a_0+\sum_{n=1}^N\left(a_n \cos (2 \pi n x)+b_n \sin (2 \pi n x)\right)$$
+
+\textbf{Trig.Polynomials and Orthonormla Systems}\\
+$\left(e^{2 \pi i n x}\right)_{n \in \mathbb{Z}}$ forms an orthonormal system on $[0,1]$. In particular,\\
+(i) for all $n \in \mathbb{Z}$,
+$$
+\int_0^1 e^{2 \pi i n x} d x= \begin{cases}0, & \text { if } n \neq 0, \\ 1, & \text { if } n=0 .\end{cases}
+$$
+(ii) if $f(x)=\sum_{n=-N}^N c_n e^{2 \pi i n x}$ is a trigonometric polynomial, then
+$$
+c_n=\left\langle f, \phi_n\right\rangle=\int_0^1 f(t) e^{-2 \pi i n t} d t .
+$$
+
+\textbf{Fourier Series}\\
+For a 1-periodic integrable function $f$ and $n \in \mathbb{Z}$ we define the $n$th Fourier coefficient by
+$$
+\widehat{f}(n)=\int_0^1 f(t) e^{-2 \pi i n t} d t=\left\langle f, \phi_n\right\rangle .
+$$
+(The integral on the right exists since $f$ is integrable and $\left|\phi_n\right| \leq 1$.) The doubly infinite series
+$$
+\sum_{n=-\infty}^{\infty} \widehat{f}(n) e^{2 \pi i n x}
+$$
+is called the Fourier series of $f$.
+
+\textbf{Doubly Infinite Series}\\
+These are series of the form
+$$
+\sum_{n=-\infty}^{\infty} a_n
+$$
+They are convergent if both the series $\sum_{n=1}^{\infty} a_n$ and $\sum_{n=0}^{\infty} a_{-n}$ are convergent. In the case of convergence, the limit of the doubly infinite series is defined as the sum of the limits of these two series.\\
+$$\sum_{n=-\infty}^{\infty}|\hat{f}(n)|^2=\hat{f}(0)+2 \cdot \sum_{n=1}^{\infty}|\hat{f}(n)|^2$$
+The series $\sum_{n=-\infty}^{\infty} a_n$ converges in the principal value sense, if the sequence of partial sums $\left(\sum_{n=-N}^N a_n\right)_{N=1,2, \ldots}$ converges.
+
+\textbf{Partial Sum of 1-periodic Functions}\\
+For a 1-periodic integrable function $f$ we define the partial sums
+$$
+S_N f(x)=\sum_{n=-N}^N \widehat{f}(n) e^{2 \pi i n x} .
+$$
+
+Note that since $\left(\phi_n\right)_n$ is an orthonormal system, $S_N f$ is exactly the orthogonal projection of $f$ ont the space of trigonometric polynomials of degree $\leq N$. 
+
+\textbf{Convolutions}\\
+For two 1-periodic functions $f, g \in L^2$ we define their convolution by
+$$
+f * g(x)=\int_0^1 f(t) g(x-t) d t .
+$$
+For 1-periodic functions $f, g \in L^2$,
+$$
+f * g=g * f \text {. }
+$$
+
+\textbf{Dirichlet Function}\\
+$$\mathbf{1}_{\mathbb{Q}}(x)= \begin{cases}1 & x \in \mathbb{Q} \\ 0 & x \notin \mathbb{Q}\end{cases}$$
+
+\textbf{Dirichlet Kernel}\\
+It turns out that the partial sum $S_N f$ can be written in terms of a convolution:
+\begin{align*}
+S_N f(x) &= \sum_{n=-N}^N \int_0^1 f(t) e^{-2 \pi i n t} d t e^{2 \pi i n x} \\
+&= \int_0^1 f(t) \sum_{n=-N}^N e^{2 \pi i n(x-t)} d t \\
+&= f * D_N(x) .
+\end{align*}
+where
+$$
+D_N(x)=\sum_{n=-N}^N e^{2 \pi i n x} .
+$$
+The sequence of functions $\left(D_N\right)_N$ is called Dirichlet kernel and can also be written
+$$
+D_N(x)=\frac{\sin \left(2 \pi\left(N+\frac{1}{2}\right) x\right)}{\sin (\pi x)}
+$$
+
+\textbf{Fejer Kernel}\\
+We define the Fejér kernel by
+$$
+K_N(x)=\frac{1}{N+1} \sum_{n=0}^N D_n(x) .
+$$
+The intuition here is that the additional average should "smooth things out" so that hopefully $f * K_N$ will have better convergence properties. This turns out to work.
+We have
+$$
+K_N(x) = \frac{1}{N+1}\left(\frac{\sin (\pi(N+1) x)}{\sin (\pi x)}\right)^2
+$$
+
+\textbf{Fejér Theorem}\\
+For every 1-periodic continuous function $f$,
+$$
+K_N * f \rightarrow f
+$$
+uniformly on $\mathbb{R}$ as $N \rightarrow \infty$.\\
+Every 1-periodic continuous function can be uniformly approximated by trigonometric polynomials. That is, for every 1-periodic continuous $f$ there exists a sequence $\left(f_n\right)_n$ of trigonometric polynomials so that $f_n \rightarrow f$ uniformly.
+
+\textbf{Approximation of Unity}\\
+An approximation of unity is a sequence $\left(k_n\right)_n$ that approximates unity:
+$$
+\lim _{n \rightarrow \infty} k_n * f=f
+$$
+for every continuous, 1-periodic $f$. 
+\begin{itemize}[label=\textbullet, labelsep=0.3em, leftmargin=1em]
+	\item
+That is $f * k_n$ converges uniformly to $f$ on $\mathbb{R}$
+$$
+\sup _{x \in \mathbb{R}}\left|f * k_n(x)-f(x)\right| \rightarrow 0
+$$
+\item
+There is no unity for the convolution of functions. More precisely, there exists no continuous function $k$ such that $k * f=f$ for all continuous, 1-periodic $f$.
+\item
+Let $\left(k_n\right)_n$ be a sequence of 1-periodic integrable functions such that\\
+1. $k_n(x) \geq 0$ for all $x \in \mathbb{R}$.\\
+2. $\int_{-1 / 2}^{1 / 2} k_n(t) d t=1$.\\
+3. For all $1 / 2 \geq \delta>0$ we have
+$$
+\text { as } n \rightarrow \infty . \quad \quad \int_{-\delta}^\delta k_n(t) d t \rightarrow 1
+$$
+
+Then $\left(k_n\right)_n$ is an approximation of unity.
+
+\end{itemize}
+The Fejér kernel$\left(K_N\right)_N$ is an approximation of unity.\\
+
+\textbf{Limit of 1-periodic Fucntions}\\
+Let $f$ be a 1-periodic and continuous function. Then
+$$
+\lim _{N \rightarrow \infty}\left\|S_N f-f\right\|_2=0 .
+$$
+Assume that $f$ is differentiable at $x$. Then $S_N f(x) \rightarrow f(x)$ as $N \rightarrow \infty$.
+
+\textbf{Completenes of the Trigonometric System}\\
+For every 1-periodic $L^2$ function $f$ we have
+$$
+\lim _{N \rightarrow \infty}\left\|S_N f-f\right\|_2=0 .
+$$
+
+In other words, the Fourier series of $f$ converges to $f$ in the $L^2$ sense.
+
+\textbf{Parseval's Theorem}\\
+If $f, g$ are 1 -periodic $L^2$ functions, then
+$$
+\langle f, g\rangle=\sum_{n=-\infty}^{\infty} \widehat{f}(n) \overline{\widehat{g}(n)} .
+$$
+In particular,
+$$
+\int_a^b|f(x)|^2 \mathrm{dx} = \|f\|_2^2=\sum_{n=-\infty}^{\infty}|\widehat{f}(n)|^2
+$$
+
+\textbf{Abel Summation}\\
+The series $\sum_{n=0}^{\infty} a_n$ with $a_n \in \mathbb{C}$ is Abel summable to $S$ if the series $A(r)=\sum_{n=0}^{\infty} a_n r^n$ converges for every $r \in(0,1)$ and the limit $\lim _{r \rightarrow 1-} A(r)$ exists and equals $S$.
+
+\textbf{Cesaro Summation}\\
+Given the sequence $a_k$, form the partial sums $s_n=\sum_{k=1}^n a_k$ and let
+$$
+\sigma_N=\frac{s_1+\cdots+s_N}{N} .
+$$
+$\sigma_N$ is called the Nth Cesàro mean of the sequence $s_k$ or the Nth Cesàro sum of the series $\sum_{k=1}^{\infty} a_k$. \\
+If $\sigma_N$ converges to a limit $S$ we say that the series $\sum_{k=1}^{\infty} a_k$ is Cesàro summable to $S$ and 
+$$|\sigma_N - S| < \epsilon|$$
+
+\section*{Misc.}
+
+\textbf{Sup Inf}\\
+\textit{Supremum ($\sup$)}\\
+1. $\forall x \in S, x \leq \sup (S) \text {. }$\\
+2. $\forall \epsilon>0, \exists x \in S, \sup (S)-x<\epsilon \text {. }$\\
+
+\textit{Infimum ($\inf$)}\\
+1. $\forall x \in S, x \geq \inf (S) \text {. }$\\
+2. $\forall \epsilon>0, \exists x \in S, x-\inf (S)<\epsilon .$\\
+
+\textbf{Nested Interval Property}\\
+A sequence $\left(I_n\right)_{n \in \mathbb{N}}$ of sets nested if
+$$
+I_1 \supset I_2 \supset I_3 \supset \ldots
+$$
+
+If each $\left(I_n\right)$ nonempty, closed and bounded then
+$$
+E=\bigcap_{n \in \mathbb{N}} I_n=\left\{x \in \mathbb{R}: x \in I_n \text { for all } n \in \mathbb{N}\right\}
+$$
+is nonempty. 
+If $\lambda\left(I_n\right) \rightarrow 0$ then $E$ contains exactly one number.
+
+\textbf{Subcovers} \\
+Let $E=[a, b]$ for some real numbers $a \leq b$. Suppose that $\left(I_\alpha\right)_{\alpha \in \mathcal{A}}$ is a collection of open intervals that cover $E$, that is
+$$
+E \subset \bigcup_{\alpha \in \mathcal{A}} I_\alpha .
+$$
+Then there exist a finite set of indices $\left\{\alpha_1, \alpha_2, \ldots, \alpha_n\right\} \subset A$ such that
+$$
+E \subset I_{\alpha_1} \cup I_{\alpha_2} \cup \cdots \cup I_{\alpha_n} .
+$$
+$\left(I_{\alpha_i}\right)_{i=1,2, \ldots, n}$ is a finite subcover of $E$.
+
+\textbf{Countability}\\
+A set $E$ is countable if there exists a bijection $f: E \rightarrow \mathbb{N}$.\\
+A countable union of countable sets is countable. 
+
+\textbf{The Exponential Function}\\
+$$E(x):=\sum_{n=0} \frac{x^n}{n !}$$
+
+\section*{Notes}
+\begin{itemize}[label=\textbullet, labelsep=0.3em, leftmargin=1em]
+\item $x y \leq \frac{1}{2}\left(x^2+y^2\right) \text { for } x, y \geq 0$
+\item $|z|^2=z \bar{z} \text { for } z \in \mathbb{C}$
+\item $\int uv\ dx=u \int v\ dx-\int (u^{\prime} \int v \ dx )\ dx$
+\item $\int \chi_I:=\lambda(I)$
+\item $|f_n(x) - f(x)| < \epsilon $ and $ \sup_x f(x) = M$
+$\implies \sup_x f_n(x) \leq M + \epsilon$
+\item $e^{\pi i}=-1$
+\item $|sin(x)|\leq |x|$
+\item $\sum_{j=1}^{\infty} \frac{1}{n(n+1)}=1<\infty$
+\item $\frac{1}{2+x}=\sum_{n=0}^{\infty}(-1)^n\left(\frac{x}{2}\right)^n$
+\item $\frac{d}{d x} \sin (x)=\cos (x)$
+\end{itemize}
+
+\section*{Examples}
+\textbf{Show that g is integrable $F^2$ version}
+Q. Suppose that $f \in L^2([0,1])$. Show that the function $g(x)=f(x) x^{-1 / 4} \chi_{(0,1]}(x)$ is integrable on $[0,1]$.\\
+A. Let
+$$
+k_n(x)=x^{-1 / 4} \chi_{(1 / n, 1]}(x), \quad n=1,2, \ldots
+$$
+As each $k_n$ is bounded and piece-wise continuous it is measurable and $\int_0^1 k_n^2<\infty$. It follows that since $k_n \rightarrow k$ then $k$ is measurable and $k^2$ is integrable on $[0,1]$ if and only if
+$$
+\sup _n \int_0^1 k_n^2<\infty
+$$
+which can be verified by a direct calculation via fundamental theorem of calculus. \\
+
+\textbf{Find the limit}\\
+Q. Find the limit of some weird function $f_n(x)$
+\begin{itemize}[label=\textbullet, labelsep=0.3em, leftmargin=1em]
+\item Guess the limit $f(x)$ using school math assumptions
+\item Use ${f_n(x) - f(x)|<\epsilon}$ to work out what value we need for $N$. If we just need "some large $N$ say "We can choose $N$ such that..."
+\item Show that for $n\geq N$ the limit is $f(x)$.
+\end{itemize}
+
+\textbf{Is the Convergence Uniform?}\\
+Consider the possible values of $f_n(x)$, if it can take a value that the $f(x)$ cannot, then use the value of $x$ that gives this value as a counter example (working backwards). \\
+
+\textbf{Is Cesaro Summable?}\\
+Q. If $\sum_{k=0}^{\infty} a_k$converges to $L$, show that it is Cesáro summable to $L$\\	 
+Let $\varepsilon>0$. Pick $N_1 \in \mathbb{N}$ such that $k \geq N_1$ implies that $\left|s_k-L\right|<\frac{\varepsilon}{2}$. Choose $N_2 \in \mathbb{N}$ such that $N_2>N_1$ and
+$$
+\sum_{k=0}^{N_1}\left|s_k-L\right|<\frac{\varepsilon N_2}{2} .
+$$
+If $N>N_2$ then
+$$
+\begin{aligned}
+&\left|\sigma_N-L\right|\leq\\
+&\frac{1}{N+1} \sum_{k=0}^{N_1}\left|s_k-L\right|+\frac{1}{N+1} \sum_{k=N_1+1}^N\left|s_k-L\right| \\
+& \leq \frac{\varepsilon N_2}{2(N+1)}+\frac{\varepsilon}{2}\left(\frac{N-N_1}{N+1}\right)<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon .
+\end{aligned}
+$$
+
+Hence we have shown the result.
+
+\section*{Counter Examples}
+\begin{itemize}[label=\textbullet, labelsep=0.3em, leftmargin=1em]
+\item For $x\in[0,1)$ we have $n x^n \rightarrow$ 0 as $n \rightarrow \infty$. However $\int_0^1 f_n=n /(n+1) \rightarrow 1$ as $n \rightarrow \infty$.
+	\item $\sum_{k=0}^{\infty}(-1)^k$ does not converge but its cesaro means do
+	$$\sigma_N= \begin{cases}\frac{N+2}{2(N+1)} & N \text { is even } \\ \frac{1}{2} & N \text { is odd }\end{cases}$$
+\end{itemize}
+
+\section*{Trig stuff}
+% Angle Sum and Difference Identities
+\textbf{Angle Sum and Difference Identities}
+\begin{align*}
+	& \sin (\theta \pm \phi)=\sin \theta \cos \phi \pm \cos \theta \sin \phi \\
+	& \cos (\theta \pm \phi)=\cos \theta \cos \phi \mp \sin \theta \sin \phi \\
+	& \tan (\theta \pm \phi)=\frac{\tan \theta \pm \tan \phi}{1 \mp \tan \theta \tan \phi}
+\end{align*}
+
+% Double Angle Identities
+\textbf{Double Angle Identities}
+\begin{align*}
+    \sin(2\theta) &= 2 \sin \theta \cdot \cos \theta \\
+    \cos(2\theta) &= \cos^2 \theta - \sin^2 \theta \\
+    \tan(2\theta) &= \frac{2 \tan \theta}{1 - \tan^2 \theta} \\
+\end{align*}
+
+\textbf{Sum to Product of Two Angles}		
+$$
+\begin{aligned}
+& \sin \theta+\sin \phi=2 \sin \left(\frac{\theta+\phi}{2}\right) \cos \left(\frac{\theta-\phi}{2}\right) \\
+& \sin \theta-\sin \phi=2 \cos \left(\frac{\theta+\phi}{2}\right) \sin \left(\frac{\theta-\phi}{2}\right) \\
+& \cos \theta+\cos \phi=2 \cos \left(\frac{\theta+\phi}{2}\right) \cos \left(\frac{\theta-\phi}{2}\right) \\
+& \cos \theta-\cos \phi=-2 \sin \left(\frac{\theta+\phi}{2}\right) \sin \left(\frac{\theta-\phi}{2}\right)
+\end{aligned}
+$$
+
+\textbf{Product of Angels}
+$$
+\begin{aligned}
+& \sin \theta \sin \phi=\frac{[\cos (\theta-\phi)-\cos (\theta+\phi)]}{2} \\
+& \cos \theta \cos \phi=\frac{[\cos (\theta-\phi)+\cos (\theta+\phi)]}{2} \\
+& \sin \theta \cos \phi=\frac{[\sin (\theta+\phi)+\sin (\theta-\phi)]}{2} \\
+& \cos \theta \sin \phi=\frac{[\sin (\theta+\phi)+\sin (\theta-\phi)]}{2}
+\end{aligned}
+$$
+\end{multicols*}
+
+\end{document}

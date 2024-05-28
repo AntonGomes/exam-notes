@@ -1,0 +1,890 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{blindtext}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\begin{multicols*}{3}
+\textbf{Fields}\\
+A field is a non-zero commutative ring $F$ in which every non-zero element $a \in F$ has an inverse $a^{-1} \in F$ defined $$a \cdot a^{-1}=a^{-1} \cdot a=1$$\\
+- All fields are Integral Domains. \\
+- Every finite integral domain is a field.
+
+\textbf{Vector Spaces}\\
+A vector space $V$ over a Field $F$ is any set where for any vector $\bf{v}\in V$ and scalar $\lambda\in F$ we have
+
+- An abelian group $V = (V, +)$ i.e. vector addition\\
+- A mapping $F\times V \rightarrow : (\lambda, \bf{v}\mapsto \lambda\bf{v})$ i.e. scalar multiplication or the action of $F$ on $V$
+
+and which also obeys the following axioms:
+$\forall\quad u, v, w \in V \text{ and } a,b\in F$
+\begin{align*}
+\mathbf{u}+(\mathbf{v}+\mathbf{w}) &= (\mathbf{u}+\mathbf{v})+\mathbf{w} \\
+\mathbf{v}+\mathbf{w} &= \mathbf{w}+\mathbf{v} \\
+\mathbf{v}+0 &= \mathbf{v} \\
+\mathbf{v}+(-\mathbf{v}) &= 0 \\
+a(\mathbf{v}+\mathbf{w}) &= a \mathbf{v}+a \mathbf{w} \\
+(a+b) \mathbf{v} &= a \mathbf{v}+b \mathbf{v} \\
+a(b \mathbf{v}) &= (a b) \mathbf{v} \\
+1 v &= v \\
+\end{align*}
+
+\textbf{Vector Subspaces}\\
+A subset $U$ of a vector space $V$ is called a vector subspace if $U$ contains the zero vector and whenever $\bf{u}, \bf{v}\in U$ and $\lambda\in F$ we have \\
+- $\bf{u} + \bf{v} \in U$\\
+- $\lambda\bf{u}\in U$\\
+We write $U\subseteq V$.\\
+For infinite and finite $U_{1}, U_{2}\subseteq V$\\
+- $U_{1}\cap U_{2}$  is a subspace\\
+- $U_{1}+U_{2}$  is a subspace\\
+- $U_{1}\cup U_{2}$  is not a subspace\\
+A proper vector subspace of a finite dimensional vector space has itself a smaller dimension. \\
+- $U\subseteq V \implies \dim U \leq \dim V$ \\
+- $\dim U = \dim V \implies V=U$\\
+QUICK CHECK: For  $\bf{u}, \bf{v}\in U$ and $\lambda_{1}\lambda_{2}\in F$ we have $\lambda_{1}\bf{u}+\lambda_{2}\bf{v}\in U$
+
+\textbf{Generating Vector Subspaces}\\
+Let $T$ be a subset of a vector space $V$ over a field $F$. Then amongst all vector subspaces of $V$ that include $T$ there is a smallest vector subspace
+$$
+\langle T\rangle= \langle T\rangle_F \subseteq V .
+$$
+It can be described as the set of all vectors $\alpha_1 \vec{v}_1+\cdots+\alpha_r \vec{v}_r$ with $\alpha_1, \ldots, \alpha_r \in F$ and $\vec{v}_1, \ldots, \vec{v}_r \in T$, together with the zero vector in the case $T=\emptyset$.\\
+A subset of a vector space is called a generating or spanning set of our vector space if its span is all of the vector space.
+
+\textbf{Power Sets}\\
+If $X$ is a set, then the set of all subsets $\mathcal{P}(X)=\{U: U \subseteq X\}$ of $X$ is the so-called power set of $X$. 
+We can refer to a subset of $\mathcal{P}(X)$ is a system of subsets of $X$. 
+Given such a system $\mathcal{U} \subseteq \mathcal{P}(X)$ we can create two new subsets of $X$, the union and the intersection of the sets of our system $\mathcal{U}$, as follows:
+\begin{align*}
+& \bigcup_{U \in \mathcal{U}} U=\{x \in X: \text {s.t. } \exists U \in \mathcal{U} \text { with } x \in U\} \\
+& \bigcap_{U \in \mathcal{U}} U=\{x \in X: x \in U \text { for all } U \in \mathcal{U}\}
+\end{align*}
+In particular the intersection of the empty system of subsets of $X$ is $X$, and the union of the empty system of subsets of $X$ is the empty set.
+
+\textbf{Liinear Independence}\\
+A subset $L$ of a vector space $V$ is called linearly independent if for all pairwise different vectors $\vec{v}_1, \ldots, \vec{v}_r \in L$ and arbitrary scalars $\alpha_1, \ldots, \alpha_r \in F$,
+$$
+\alpha_1 \vec{v}_1+\cdots+\alpha_r \vec{v}_r=\overrightarrow{0} \Longrightarrow \alpha_1=\cdots=\alpha_r=0
+$$
+
+\textbf{Basis}\\
+A basis of a vector space V is a linearly independent generating set in V.\\
+A basis always exists for finite vector spaces. 
+The following are equivalent for a subset $E$ of a vector space $V$\\
+(1) Our subset $E$ is a basis, i.e. a linearly independent generating set;\\
+(2) Our subset $E$ is minimal among all generating sets, meaning that $E \backslash\{\vec{v}\}$ does not generate $V$, for any $\vec{v} \in E$;\\
+(3) Our subset $E$ is maximal among all linearly independent subsets, meaning that $E \cup\{\vec{v}\}$ is not linearly independent for any $\vec{v} \in V$.\\
+(4) If $L \subset V$ is a linearly independent subset and $E$ is minimal amongst all generating sets of our vector space with the property that $L \subseteq E$, then $E$ is a basis.
+(5) If $E \subseteq V$ is a generating set and if $L$ is maximal amongst all linearly independent subsets of vector space with the property $L \subseteq E$, then $L$ is a basis.
+
+\textbf{Dimension}\\
+The dimension of a vector space $V$ is the cardinality (size) of a basis of $V$.\\
+
+\textbf{e.g. Free Vector Space}\\
+Let $X$ be $a$ set and $F$ a field. The set $\operatorname{Maps}(X, F)$ of all mappings $f: X \rightarrow F$ is called the free vecotr space with the operations of pointwise addition and multiplication by a scalar. \\
+The subset of all mappings which send almost all elements of $X$ to zero is a vector subspace
+
+\textbf{Fundamental Estimate}\\
+No linearly independent subset of $a$ given vector space has more elements than a generating set. Thus if $V$ is a vector space, $L \subset V$ a linearly independent subset and $E \subseteq V$ a generating set, then:
+$$
+|L| \leqslant|E|
+$$
+
+\textbf{Steinitz Exchange Lemma}\\
+Let $V$ be a vector space, $L \subset V$ a finite Linear Independence|linearly independent subset and $E \subseteq V$ a generating set. Then there is an injection $\phi: L \hookrightarrow E$ such that $(E \backslash \phi(L)) \cup L$ is also a generating set for $V$.\\
+In other words, we can swap some elements of a generating set by the elements of our linearly independent set, and still keep a generating set.
+
+\textbf{Dimension Theorem}\\
+Let $V$ be a vector space containing vector subspaces $U, W \subseteq V$. Then
+$$
+\operatorname{dim}(U+W)+\operatorname{dim}(U \cap W)=\operatorname{dim} U+\operatorname{dim} W .
+$$
+
+\textbf{Linear Homomorphisms}
+Let $V$ and $W$ be vector spaces over the same field. \\
+A function $f:V\rightarrow W$ is said to be a linear map if for all $x,y\in V$ and some scalar $c\in K$, the operations of vector addition and scalar multiplication are preserved. 
+\begin{align*}
+f(x+y) &= f(x)+f(y)\\
+f(cx) &= cf(u)
+\end{align*}
+
+- A linear map is injective if and only if its kernel is zero. \\
+- All linear maps have that $f(\vec{0})=\vec{0}$.\\
+- All compositions of linear maps are also linear.\\
+- Linear mappings are completely determined by the values they take on the basis of $V$. \\
+Endomorphisms are Homomorphisms from a vector space to itself.\\
+isomorphisms are bijective homomorphisms.\\
+Automorphisms are isomorphisms from a vector space to itself.\\
+
+\textbf{Kernal and Image}\\
+The pre-image of the zero vector of a linear mapping $f: V \rightarrow W$ is denoted by
+$$
+\operatorname{ker}(f):=f^{-1}(0)=\{v \in V: f(v)=0\}
+$$
+and is called the kernel of the linear mapping $f$. \\
+The image of a linear mapping $f: V \rightarrow W$ is the subset $\operatorname{im}(f)=f(V) \subseteq W$. 
+The kernel and image are vector subspaces of $V$.\\
+
+\textbf{Fixed Points}\\
+A point that is sent to itself by a mapping is called a fixed point of the mapping. 
+
+Given a mapping $f: X \rightarrow X$, we denote the set of fixed points by
+$$
+X^f=\{x \in X: f(x)=x\} .
+$$
+
+\textbf{Complemetary Subspaces}\\
+Two vector subspaces $V_1, V_2$ of a vector space $V$ are called complementary if $V_1 \times V_2 \stackrel{\sim}{\rightarrow} V$ (addition) defines a Bijection.
+
+\textbf{Internal Direct Sum}\\
+Given Complementary Subspaces $U, U^{\prime}\subseteq V$ and the Linear Mappings $f:U\rightarrow V$, $f^{\prime}:U^{\prime}\rightarrow V$ then we can form a new linear mapping $f: U \oplus U^\prime \rightarrow V$ by the recipe $$f\left(u,u^{\prime}\right)=f\left(u\right)+ f^{\prime}\left(u^\prime\right)$$\\
+we then produce an vector space isomorphism $U \oplus U^\prime \stackrel{\sim}{\rightarrow} V$. \\
+We abuse notation a little by writing $V=U \oplus U^{\prime}$ and say that the vector space $V$ is the internal direct sum of the vector subspaces $U$ and $U^\prime$.
+
+\textbf{Direct Sum}\\
+Let $V$ be a Vector Space with Vector Subspaces $V_1, \ldots, V_n$. \\
+The vector subspace of $V$ they generate is called the sum of our vector subspaces and denoted by $V_1+\cdots+V_n$. \\
+$$\langle V_1\cup\cdots\cup V_n\rangle=V_1+\cdots+V_n$$
+If the natural Homomorphism given by addition $V_1+\cdots+V_n \rightarrow V$ is an injection then we say the sum of the vector subspaces $V_i$ is direct.\\
+We write their sum also as $V_1 \oplus \cdots \oplus V_n$.
+
+\textbf{Linear Mapping and Basis}\\
+Let $V, W$ be vector spaces over $F$ and let $B \subset V$ be a basis. Then restriction of a mapping gives a bijection
+\begin{align*}
+operatorname{Hom}_F(V, W) & \stackrel{\sim}{\rightarrow} \operatorname{Maps}(B, W) \\
+f & \left.\mapsto f\right|_B .
+\end{align*}
+
+\textbf{In-Bi-Surjection}\\
+$f: A \rightarrow B$\\
+- is an injection (or one-to-one) if $f(a_1) = f(a_2)$ implies $a_1 = a_2$.\\
+- is a surjection (or onto) if every $b \in B$ has at least one pre-image in $A$.\\
+- is a bijection (or one-to-one correspondence) if it is both an injection and a surjection.
+
+\textbf{Left and Right Inverse}
+Every injective linear mapping $f: V \hookrightarrow W$ has a left inverse, in other words a linear mapping $g: W \rightarrow V$ such that $g \circ f=\mathrm{id}_V$.
+
+Every surjective linear mapping $f: V \rightarrow W$ has a right inverse, in other words a linear mapping $g: W \rightarrow V$ such that $f \circ g=\operatorname{id}_W$.
+
+\textbf{Rank-Nulity}\\
+Let $f: V \rightarrow W$ be a linear mapping between vector spaces. 
+
+Then:
+$$
+\operatorname{dim} V=\operatorname{dim}(\operatorname{ker} f)+\operatorname{dim}(\operatorname{im} f) .
+$$
+
+This is called the "Rank-Nullity Theorem" because it is common to call the dimension of the image of $f$ the rank of $f$, and the dimension of the kernel of $f$ the nullity of $f$.
+
+Applications:
+$f: V \rightarrow W$ is linear and $V$ is finite-dimensional. 
+- Then $f$ is injective if and only if $\operatorname{dim im} f=\operatorname{dim} V$. 
+    - Since $\operatorname{dim im} f \leq \operatorname{dim} W$, a necessary condition for injectivity is $\operatorname{dim} V \leq \operatorname{dim} W$.
+- Then $f$ is surjective if and only if $\operatorname{dim} \operatorname{ker} f=\operatorname{dim} V-\operatorname{dim} W$.
+    - Since $\operatorname{dim} \operatorname{ker} f \geq 0$, a necessary condition for surjectivity is $\operatorname{dim} V \geq \operatorname{dim} W$.
+
+Suppose $f: V \rightarrow W$ is an isomorphism and $V$ is finite-dimensional. Then $\operatorname{dim} W=\operatorname{dim} V$. (In particular, $F^m$ and $F^n$ are isomorphic if and only if $m=n$.)
+
+Suppose $f: V \rightarrow W$ is linear and that $V, W$ are finite-dimensional with the same dimension. Then $f$ is injective if and only if $f$ is surjective.
+
+\textbf{Matrices as Linear Mapppings}\\
+Let $F$ be a field and let $m, n \in \mathbb{N}$ be natural numbers. \\
+There is a bijection between the space of linear mappings $F^m \rightarrow F^n$ and the set of matrices with $n$ rows and $m$ columns and entries in $F$ :\\
+\begin{align*}
+\mathrm{M}: \operatorname{Hom}_F\left(F^m, F^n\right) & \stackrel{\sim}{\rightarrow} \operatorname{Mat}(n \times m ; F) \\
+f & \mapsto[f] .
+\end{align*}
+This attaches to each linear mapping $f$ its representing matrix $\mathrm{M}(f):=[f]$. \\
+The columns of this matrix are the images under $f$ of the standard basis elements of $F^m$ \\
+$$
+[f]:=\left(f\left(\vec{e}_1\right)\left|f\left(\vec{e}_2\right)\right| \cdots \mid f\left(\vec{e}_m\right)\right) .
+$$
+
+\textbf{Mat Mul}\\
+Let $n, m, \ell \in \mathbb{N}, F$ a field, and let $A \in \operatorname{Mat}(n \times m ; F)$ and $B \in \operatorname{Mat}(m \times \ell ; F)$ be matrices. 
+
+The product $A \circ B=A B \in \operatorname{Mat}(n \times \ell ; F)$ is the matrix defined by
+$$
+(A B)_{i k}=\sum_{j=1}^m A_{i j} B_{j k}
+$$
+Properties\\
+\begin{align*}
+\left(A+A^{\prime}\right) B & =A B+A^{\prime} B \\
+A\left(B+B^{\prime}\right) & =A B+A B^{\prime} \\
+I B & =B \\
+A I & =A \\
+(A B) C & =A(B C) .
+\end{align*}
+
+\textbf{Composition of Linear Mappings}\\
+The composition $g \circ f: U \rightarrow W$ is the matrix product of the representing matrices of $f$ and $g$:
+$$
+\prescript{}{\mathcal{C}}{[g \circ f]}_{\mathcal{A}}=\prescript{}{\mathcal{C}}{[g]}_{\mathcal{B}} \circ{ }{\mathcal{B}}[f]_{\mathcal{A}}
+$$
+
+\textbf{Invertible Matrices}\\
+A matrix $A$ is called invertible if and only if there exists matrices $B$ and $C$ such that $BA=I$ and $AC=I$. \\
+To calculate the inverse of a matrix $A$:\\
+- Write the identity matrix $I$ next to it, thereby producing an $(n \times 2 n)$-matrix $(A \mid I)$. \\
+- Apply elementary row operations, including multiplying a row by a non-zero scalar, in order to bring $A$ into Echelon Form, and then possibly further row operations to bring it into "reduced" echelon form: this will actually be the identity matrix. \\
+- The inverse to $A$ is then what is standing in the right half of the $(n \times 2 n)$-matrix. \\
+
+\textbf{Elementary Matrix}\\
+An elementary matrix is any square matrix that differs from the identity matrix in at most one entry.\\
+All the elementary matrices with entries in a field are, with the exception of those where you take one 1 in the identity matrix and replace it by 0 , invertible.
+
+\textbf{Rank}\\
+The column rank of a matrix $A \in \operatorname{Mat}(n \times m ; F)$ is the dimension of the subspace of $F^n$ generated by the columns of $A$. \\
+Column and row rank are equal. \\
+Rank is subadditive:
+$$
+\operatorname{rank}(A+B) \leq \operatorname{rank} A+\operatorname{rank} B
+$$
+
+\textbf{Center of a Group}\\
+The centre of a group $G$, denoted as $Z(G)$, consists of elements that commute with every element in $G$.\\
+$$Z(G)=\{g \in G \mid \forall h \in G, g h=h g\}$$
+The centre is a subgroup of $G$ and is always non-empty.\\
+If $G$ is an abelian group, then its centre is the entire group $(Z(G)=$ $G)$.
+
+\textbf{Abstract Linear Mappings as Matrices}\\
+Let $F$ be a Field, $V$ and $W$ Vector Spaces over $F$ with ordered Basis $\mathcal{A}=\left(\vec{v}_1, \ldots, \vec{v}_m\right)$ and $\mathcal{B}=\left(\vec{w}_1, \ldots, \vec{w}_n\right)$. \\
+Then to each Linear Mapping $f: V \rightarrow W$ we associate a representing matrix $\prescript{}{\mathcal{B}}{[f]}_{\mathcal{A}}$ whose entries $a_{i j}$ are defined by the identity
+$$
+f\left(\vec{v}_j\right)=a_{1 j} \vec{w}_1+\cdots+a_{n j} \vec{w}_n \in W .
+$$
+i.e. the image of a basis element $\vec{v}_i\in\mathcal{A}$ of $V$ is a linear combination of the basis elements $\vec{w}_i\in\mathcal{B}$ of $W$.\\
+This produces a Bijection, which is even an Isomorphism of vector spaces:
+\begin{align*}
+\mathrm{M}_{\mathcal{B}}^{\mathcal{A}}: \operatorname{Hom}_F(V, W) & \xrightarrow{\overset{\sim}{}}  \operatorname{Mat}(n \times m ; F) \\
+f & \mapsto{ }_{\mathcal{B}}[f]_{\mathcal{A}}
+\end{align*}
+We call $\mathrm{M}_{\mathcal{B}}^{\mathcal{A}}(f)={ }_{\mathcal{B}}[f]_{\mathcal{A}}$ the representing matrix of the mapping $f$ with respect to the bases $\mathcal{A}$ and $\mathcal{B}$. \\
+The columns of this matrix give the coefficients of the linear combination of vectors in $\mathcal{B}$ that make up each element of $\mathcal{A}$\\
+i.e. The coordinates of the image of a basis vector from $\mathcal{A}$ with respect to the basis $\mathcal{B}$. \\
+If $V$ is $m$-dimensional and $W$ is $n$-dimensional then $\mathrm{M}_{\mathcal{B}}^{\mathcal{A}}(f)=\left(a_{i j}\right)$ is an $n \times m$ matrix, i.e. has $n$ rows and $m$ columns.
+
+\textbf{Change of Basis}\\
+The representing the identity mapping with respect to these bases
+$$
+\prescript{}{\mathcal{B}}{\left[\mathrm{id}_V\right]}_{\mathcal{A}}
+$$
+is called a change of basis matrix.\\ 
+By definition, its entries are given by the equalities $\vec{v}_j=\sum_{i=1}^n a_{i j} \vec{w}_i$.
+
+\textbf{between Vector Spaces}\\
+Let $V$ and $W$ be finite dimensional Vector Space|vector spaces over $F$ and let $f: V \rightarrow W$ be a Linear Mapping. \\
+Suppose that $\mathcal{A}, \mathcal{A}^{\prime}$ are Families of Elements|ordered basis of $V$ and $\mathcal{B}, \mathcal{B}^{\prime}$ are ordered bases of $W$. 
+Then
+$$
+\prescript{}{\mathcal{B}^{\prime}}[f]_{\mathcal{A}^{\prime}}={ }_{\mathcal{B}^{\prime}}\left[\mathrm{id}_W\right]_{\mathcal{B}} \circ{ }_{\mathcal{B}}[f]_{\mathcal{A}} \circ \prescript{}{\mathcal{A}}[\mathrm{id}_V]_{\mathcal{A}^{\prime}}
+$$
+
+\textbf{within a Vector Space}\\
+Now let $f$ be the Endomorphism $f:V\rightarrow V$, we have
+$$
+\prescript{}{\mathcal{A}^{\prime}}[f]_{\mathcal{A}^{\prime}}={ }_{\mathcal{A}}\left[\mathrm{id}_V\right]_{\mathcal{A}^\prime}^{-1} \circ{ }_{\mathcal{A}}[f]_{\mathcal{A}} \circ \prescript{}{\mathcal{A}}[\mathrm{id}_V]_{\mathcal{A}^{\prime}}
+$$
+
+\textbf{Similar Matrices}\\
+Let $N=\prescript{}{\mathcal{B}}[f]_\mathcal{B}$ and $M=\prescript{}{\mathcal{A}}[f]_\mathcal{A}$ then if 
+$$N=T^{-1}MT$$
+where $T=\prescript{}{\mathcal{A}}[id_V]_\mathcal{B}$.
+We say that $N$ and $M$ are similar matrices.\\
+Matrices that are similar are equivalent. 
+
+\textbf{Mod}\\
+The set of integers modulo $m$ is the set of integers that have the same remainder when you divide them by $m$ and is written $\mathbb{Z} / m \mathbb{Z}$.\\
+$\mathbb{Z} / m \mathbb{Z}$ is a ring. \\
+As $\bar{a}=\bar{b}\in\mathbb{Z}/m\mathbb{Z}$ is the same as $a-b \in m \mathbb{Z}$, and we write
+$$
+a \equiv b \quad(\bmod m) .
+$$
+The elements of $\mathbb{Z} / m \mathbb{Z}$ consist of congruence classes of integers modulo $m$. Each congruence class $\bar{a}$ is of the form $\bar{a}=a+m \mathbb{Z}$ with $a \in \mathbb{Z}$. \\
+If $m \in \mathbb{N} \geqslant 1$ then there are $m$ congruence classes modulo $m$, in other words $|\mathbb{Z} / m \mathbb{Z}|=m$, and can be written out as 
+$$
+\mathbb{Z} / m \mathbb{Z}=\{\overline{0}, \overline{1}, \ldots, \overline{m-1}\}
+$$
+ddition and multiplication are defined
+$$
+\bar{a}+\bar{b}=\overline{a+b} \text { and } \bar{a} \cdot \bar{b}=\overline{a b} .
+$$
+$\mathbb{Z} / m \mathbb{Z}$ is an integral domain if and only if $m$ is prime.
+
+\textbf{Rings}\\
+A ring is a set with two operations $(R,+, \cdot)$ that satisfy:
+1) $(R,+)$ is a Abelian group; this means
+	- there is an identity element $0 = 0_{R}\in R$ 
+2) $(R, \cdot)$ is a monoid; this means 
+	-  the second operation $\cdot: R \times R \rightarrow R$ is associative 
+	- there is an identity element $1=1_R \in R$, often called just the identity, with the property that $1 \cdot a=a \cdot 1=a$ for all $a \in R$.
+3) The distributive laws hold, meaning that for all $a, b, c \in R$
+\begin{align*}
+& a \cdot(b+c)=(a \cdot b)+(a \cdot c) \\
+& (a+b) \cdot c=(a \cdot c)+(b \cdot c) .
+\end{align*}
+The two operations are called addition and multiplication in our ring. A ring in which multiplication is commutative, that is in which $a \cdot b=b \cdot a$ for all $a, b \in R$, is a commutative ring.
+
+\textbf{Units of a Ring}\\
+Let $R$ be a ring. An element $a \in R$ is called a unit if is invertible in $R$ i.e. there exists $a^{-1} \in R$ such that
+$$
+a a^{-1}=1=a^{-1} a .
+$$
+The set of units in a ring forms a group under multiplication and is called the group of units of the ring $R$ written $R^\times$.
+
+\textbf{Integral Domains}\\
+An integral domain is a non-zero commutative ring that has no zero-divisors.
+1. $a b=0 \Rightarrow a=0$ or $b=0$, and\\
+2. $a \neq 0$ and $b \neq 0 \rightarrow a b \neq 0$\\
+Let $R$ be an integral domain and let $a, b, c \in R$. If $a b=a c$ and $a \neq 0$ then $b=c$.
+All Fields are integral domains since a unit cannot be a zero-divisor. \\
+Every finite integral domain is a field.
+
+\textbf{Orbit - Stabiliser}\\
+The orbit of an element $x$ under the action of a group $G$ is denoted as $G$. $x$ and is the set $\{g \cdot x \mid g \in G\}$.\\
+The stabiliser of an element $x$ under the action of a group $G$, denoted as $G_x$, is the subgroup of elements in $G$ that leave $x$ fixed. $G_x=\{g \in G \mid g \cdot x=x\}$
+
+\textbf{Polynomials}\\
+Let $R$ be a ring. A polynomial over $R$ is an expression of the form
+$$
+P=a_0+a_1 X+a_2 X^2+\cdots+a_m X^m
+$$
+for some non-negative integer $m$ and elements $a_i \in R$ for $0 \leqslant i \leqslant m$. \\
+The set of all polynomials over $R$ is denoted by $R[X]$. \\
+In case $a_m$ is non-zero, the polynomial $P$ has degree $m$, written $\operatorname{deg}(P)$, and $a_m$ is its leading coefficient. \\
+When the leading coefficient is 1 the polynomial is a monic polynomial.\\
+A polynomial of degree one is called linear, a polynomial of degree two is called quadratic, and a polynomial of degree three is called cubic.
+
+\textbf{Ring of Polynomials}\\
+Set $R[X]$ of Polynomials becomes a Ring called the ring of polynomials with coefficients in $R$, with the operations $+, \times$.
+\begin{align*}
+&\left(a_0+a_1 X+\cdots a_m X^m\right)\\
+&\qquad +\left(b_0+b_1 X+\cdots b_n X^n\right)\\
+&=\left(a_0+b_0\right)+\left(a_1+b_1\right) X +\cdots
+\end{align*}
+and
+\begin{align*}
+&\left(a_0+a_1 X+\cdots a_m X^m\right)\\
+&\qquad\times\left(b_0+b_1 X+\cdots b_n X^n\right) \\
+& =a_0 b_0+\left(a_0 b_1+a_1 b_0\right) X\\
+&+\left(a_0 b_2+a_1 b_1+a_2 b_0\right) X^2+\cdots a_m b_n X^{m+n}
+\end{align*}
+where $m, n \geqslant 0, a_i, b_j \in R$ for $0 \leqslant i \leqslant m$ and $0 \leqslant j \leqslant n$.\\
+The zero and the identity of $R[X]$ are the zero and identity of $R$, respectively.\\
+The elements of $R$ are just polynomials of degree 0. These are constant polynomials. \\
+From the multiplication rule, if $R$ is commutative, then so too is $R[X]$.\\
+If $R$ is a ring with no zero-divisors, then $R[X]$ has no zero-divisors and $\operatorname{deg}(P Q)=$ $\operatorname{deg}(P)+\operatorname{deg}(Q)$ for non-zero $P, Q \in R[X]$.
+If $R$ is an integral domain then so is $R[X]$.\\
+Let $R$ be an integral domain and let $P, Q \in R[X]$ with $Q$ monic. \\
+Then there exists unique $A, B \in R[X]$ such that $$P=A Q+B$$ and $\operatorname{deg}(B)<\operatorname{deg}(Q)$ or $B=0$.
+
+\textbf{Polynomial Roots}\\
+Let $R$ be a commutative ring, let $\lambda \in R$ and $P(X) \in R[X]$. Then $\lambda$ is a root of $P(X)$ if and only if $(X-\lambda)$ divides $P(X)$.\\
+Let $R$ be a field, or more generally an integral domain. Then a non-zero polynomial $P \in R[X] \backslash\{0\}$ has at most $\operatorname{deg}(P)$ roots in $R$.
+
+\textbf{Algebraic Closure}\\
+A field $F$ is algebraically closed if each non-constant polynomial $P \in F[X] \backslash F$ with coefficients in our field has a root in our field $F$.\\
+If $F$ is an algebraically closed field, then every non-zero polynomial $P \in F[X] \backslash\{0\}$ decomposes into linear factors
+$$
+P=c\left(X-\lambda_1\right) \cdots\left(X-\lambda_n\right)
+$$
+with $n \geqslant 0, c \in F^{\times}$and $\lambda_1, \ldots, \lambda_n \in F$.\\
+This decomposition is unique up to reordering the factors.
+
+\textbf{Fundamental Theorem of Algebra}\\
+The field of complex numbers $\mathbb{C}$ is algebraically closed.
+
+\textbf{Rings Homomorphisms}\\
+Let $R$ and $S$ be rings. \\
+A mapping $f: R \longrightarrow S$ is a ring homomorphism if the following hold for all $x, y \in R$ :
+\begin{align*}
+f(x+y) & =f(x)+f(y) \\
+f(x y) & =f(x) f(y)
+\end{align*}
+For all $x, y \in R$ and $m \in \mathbb{Z}$ :\\
+- $f\left(0_R\right)=0_S$, where $0_R$ and $0_S$ are the zeros of $R$ and $S$ respectively;\\
+- $f(-x)=-f(x)$;\\
+- $f(x-y)=f(x)-f(y)$;\\
+- $f(m x)=m f(x)$,\\
+- $f\left(x^n\right)=(f(x))^n$\\
+$f$ is injective if and only if $\operatorname{ker} f=\{0\}$.
+
+\textbf{Ideals}\\
+A subset $I$ of a ring $R$ is an ideal, written $I \unlhd R$, if the following hold:\\
+1. $I \neq \emptyset$;\\
+2. $I$ is closed under subtraction;\\
+3. for all $i \in I$ and $r \in R$ we have $r i$, $ir \in I$.\\
+Condition (3) says that $I$ is closed under multiplication by elements of $R$.\\
+In any ring $R,\{0\}$ and $R$ are ideals of $R$. \\
+The intersection of any collection of ideals of a ring $R$ is an ideal of $R$.\\
+Let $I$ and $J$ be ideals of a ring $R$. Then
+$$
+I+J=\{a+b: a \in I, b \in J\}
+$$
+is an ideal of $R$.\\
+Each ideal is a kernel of at least one Ring Homomorphism, namely $can : R \rightarrow R/I$
+
+\textbf{Generting Ideals}\\
+Let $R$ be a commutative ring and let $T \subset R$. 
+Then the ideal of $R$ generated by $T$ is the set
+\begin{align*}
+&{ }_R\langle T\rangle=\{r_1 t_1+\cdots+r_m t_m: t_1, \ldots, t_m \in T, \\
+&\qquad\qquad\qquad\qquad\qquad\qquad r_1, \ldots, r_m \in R\},\\
+\end{align*}
+together with the zero element in the case $T=\emptyset$. \\
+We often write ${ }_R\left\langle t_1, \ldots, t_n\right\rangle$ instead of ${ }_R\left\langle\left\{t_1, \ldots, t_n\right\}\right\rangle$.\\
+Let $m \in \mathbb{Z}$. Then ${ }_{\mathbb{Z}}\langle m\rangle=m \mathbb{Z}$.\\
+Let $P \in \mathbb{R}[X]$. Then $\mathbb{R}_{\mathbb{R}[]}\langle P\rangle=\{A P: A \in \mathbb{R}[X]\}=\{Q: P$ divides $Q$ in $\mathbb{R}[X]\}$.\\
+Let $R$ be a commutative ring and let $T \subseteq R$. Then ${ }_R\langle T\rangle$ is the *smallest* ideal of $R$ that contains $T$.
+
+\textbf{Principle Ideals}\\
+An ideal $I$ of $R$ is called a principal ideal if $I=\langle t\rangle$ for some $t \in R$.\\
+i.e. it $I$ is generated by one element of $R$.
+
+\textbf{Kernal of a Ring Homomorphism}\\
+Let $R$ and $S$ be Rings with zero elements $0_R$ and $0_S$ respectively and let $f: R \rightarrow S$ be a ring homomorphism. 
+The kernel of $f$ is
+$$
+\text { ker } f=\left\{r \in R: f(r)=0_S\right\} \text {. }
+$$
+
+\textbf{Subrings}\\
+Let $R$ be a ring. A subset $R^{\prime}$ of $R$ is a subring of $R$ if $R^{\prime}$ itself is a ring under the operations of *addition* and *multiplication* defined in $R$.\\
+Quick Check\\
+Let $R^{\prime}$ be a subset of a ring $R$. Then $R^{\prime}$ is a subring if and only if\\
+1) $R^{\prime}$ has a multiplicative identity, and\\
+2) $R^{\prime}$ is closed under subtraction: $a, b \in R^{\prime} \rightarrow a-b \in R^{\prime}$, and\\
+3) $R^{\prime}$ is closed under multiplication.\\
+Let $R$ and $S$ be rings and $f: R \longrightarrow S$ a Ring Homomorphism.\\
+1) If $R^{\prime}$ is a subring of $R$ then $f\left(R^{\prime}\right)$ is a subring of $S$. In particular, $\operatorname{im} f$ is a subring of $S$.\\
+2) Assume that $f\left(1_R\right)=1_S$. Then if $x$ is a unit in $R, f(x)$ is a unit in $S$ and $(f(x))^{-1}=f\left(x^{-1}\right)$. In this case $f$ restricts to a group homomorphism $\left.f\right|_{R^{\times}}: R^{\times} \rightarrow S^{\times}$.\\
+It is not true that the intersection of two subrings of $R$ is a subring of $R$.
+
+\textbf{Equivalence Relation}\\
+$A$ relation $R$ on a set $X$ is a subset $R \subseteq X \times X$. In this context, instead of writing $(x, y) \in R$, I will write $x R y$. \\
+Then $R$ is an equivalence relation on $X$ when for all elements $x, y, z \in X$ the following hold:\\
+1) Reflexivity: $x R x$;\\
+2) Symmetry: $x R y \Leftrightarrow y R x$;\\
+3) Transitivity: ( $x R y$ and $y R z) \rightarrow x R z$.\\
+
+\textbf{Equivalence Class}\\
+Suppose that $\sim$ is an Equivalence Relation on a set $X$. For $x \in X$ the set $E(x):=$ $\{z \in X: z \sim x\}$ is called the equivalence class of $x$. \\
+A subset $E \subseteq X$ is called an equivalence class for our equivalence relation if there is an $x \in X$ for which $E=E(x)$. \\
+An element of an equivalence class is called a representative of the class. \\
+A subset $Z \subseteq X$ containing precisely one element from each equivalence class is called a system of representatives for the equivalence relation.\\
+For $x, y \in X$ the following are equivalent:\\
+1) $x \sim y$;\\
+2) $E(x)=E(y)$;\\
+3) $E(x) \cap E(y) \neq \emptyset$.
+
+\textbf{Set of Equivalence Classes}\\
+Given an Equivalence Relation $\sim$ on the set $X$, we denote the set of equivalence classes, which is a subset of the Power Sets|power set $\mathcal{P}(X)$, by
+$$
+(X / \sim):=\{E(x): x \in X\}
+$$
+There is a canonical mapping where each element of $X$ must belong to some equivalence class\\
+$$can : X \rightarrow(X / \sim), x \mapsto E(x)$$
+It is a Surjection.
+
+\textbf{Cosets of a Ring}\\
+Let $I \unlhd R$ be an ideal in a Ring $R$. The set
+$$
+x+I:=\{x+i: i \in I\} \subseteq R
+$$
+is a coset of $I$ in $R$ or the coset of $x$ with respect to $I$ in $R$.\\
+In the sense of group theory, $x+I$ is the left coset w.r.t $I$ and is also the right coset because $R$ is Abelian. \\
+It follows that there is an Equivalence Relation on $R$ defined by 
+$$x\sim y \iff x - y \in I$$
+whose Equivalence Classes $E(x)$ are the cosets $x+I$.
+
+\textbf{Factor Rings}\\
+Then $R / I$, the factor ring of $R$ by $I$ (or the quotient of $R$ by $I$), is the Set of Equivalence Classes $(R / \sim)$ for this $\sim$.\\
+This is actually the set of cosets of $I$ in $R$ because each Equivalence Class can be written 
+\begin{align*}
+x \sim y &\iff x-y \in I\\
+&\implies y\in I+x\\
+&\implies[x]=x+I:=\{x+r:r\in I\}
+\end{align*}
+which is clearly of coset of $I$ wrt $x$. \\
+$R/I$  is a ring.\\
+Addition is defined by
+$$
+(x+I) \dot{+}(y+I)=(x+y)+I \quad \text { for all } x, y \in R
+$$
+with $0+I$ as the additive identity. \\
+Multiplication is defined by
+$$
+(x+I) \cdot(y+I)=x y+I \quad \text { for all } x, y \in R
+$$
+with $-x+I$ as the inverse of $x+I$
+
+\textbf{Universal Property of Factor Rings}\\
+Let $R$ be a Ring and $I$ an ideal of $R$.\\
+1) The mapping $can : R \rightarrow R / I$ sending $r$ to $r+I$ for all $r \in R$ is a Surjection|surjective Ring Homomorphism with kernel $I$.\\
+2) If $f: R \rightarrow S$ is a ring homomorphism with $f(I)=\left\{0_S\right\}$, so that $I \subseteq \operatorname{ker} f$, then there is a unique ring homomorphism $\bar{f}: R / I \rightarrow S$ such that $f=\bar{f} \circ can$.\\
+The second part of the Theorem states that $f$ factorises uniquely through the canonical mapping to the factor whenever the ideal $I$ is sent to zero.
+
+\textbf{First Isomorphism Theorem for Rings}\\
+Let $R$ and $S$ be Rings. Then every Ring Homomorphism $f: R \longrightarrow S$ induces a ring Isomorphism
+$$
+\bar{f}: R / \operatorname{ker} f \xrightarrow{\sim} \operatorname{im} f .
+$$
+
+\textbf{Modules}\\
+A (left) module $M$ over a Ring $R$ is a pair consisting of an Abelian group $M=$ $(M, \dot{+})$ and a mapping
+\begin{align*}
+R \times M & \rightarrow M \\
+(r, a) & \mapsto r a
+\end{align*}
+such that for all $r, s \in R$ and $a, b \in M$ the following identities hold:
+\begin{align*}
+r(a+b) & =(r a) \dot{+}(r b) \\
+(r+s) a & =(r a) \dot{+}(s a) \\
+r(s a) & =(r s) a \\
+1_R a & =a
+\end{align*}
+The first two laws are the Distributive Laws; the third law is called the Associativity Law. \\
+We call a left module $M$ over a ring $R$ an $R$-module.\\
+Let $R$ be a ring and $M$ an $R$-module.\\
+1) $0_R a=0_M$ for all $a \in M$.\\
+2) $r 0_M=0_M$ for all $r \in R$.\\
+3) $(-r) a=r(-a)=-(r a)$ for all $r \in R, a \in M$. Here the first negative is a negative in $R$, the last two are negatives in $M$.
+
+\textbf{Direct Sum of Modules}\\
+Given a Ring $R$ and $R$-modules $M_1, \ldots, M_n$, the cartesian product $M_1 \times M_2 \times$ $\cdots \times M_n$ is an $R$-module if we define addition and multiplication as follows:
+\begin{align*}
+&\left(a_1, \ldots, a_n\right)+\left(b_1, \ldots, b_n\right)\\
+&=\left(a_1+b_1, \ldots, a_n+b_n\right)
+\end{align*}
+and
+$$
+r\left(a_1, \ldots, a_n\right)=\left(r a_1, \ldots, r a_n\right)
+$$
+for all $r \in R$ and $a_i, b_i \in M$. \\
+This is denoted $M_1 \oplus \cdots \oplus M_n$ and called the direct sum. 
+
+\textbf{Sub-module}\\
+A non-empty subset $M^{\prime}$ of an $R$-module $M$ is a submodule if $M^{\prime}$ is an $R-$ module with respect to the operations of the $R$-module $M$ restricted to $M^{\prime}$.\\
+- Let $T \subseteq M$. Then ${ }_R\langle T\rangle$ is the smallest submodule of $M$ that contains $T$.\\
+- The intersection of any collection of submodules of $M$ is a submodule of $M$.\\
+- Let $M_1$ and $M_2$ be submodules of $a$. Then
+$$
+M_1+M_2=\left\{a+b: a \in M_1, b \in M_2\right\}
+$$
+	is a submodule of $M$.\\
+QUICK CHECK\\
+Let $R$ be a Ring and let $M$ be an $R$-module. A subset $M^{\prime}$ of $M$ is a submodule if and only if\\
+1) $0_M \in M^{\prime}$\\
+2) $a, b \in M^{\prime} \Rightarrow a-b \in M^{\prime}$\\
+3) $r \in R, a \in M^{\prime} \Rightarrow r a \in M^{\prime}$.\\
+
+\textbf{Cosets of a Module}\\
+Let $R$ be a Ring, $M$ an $R$-module and $N$ a submodule of $M$. \\
+For each $a \in M$ the coset of $a$ with respect to $N$ in $M$ is
+$$
+a+N=\{a+b: b \in N\}
+$$
+It is a coset of $N$ in the abelian group $M$ and so is an Equivalence Class for the Equivalence Relation $a \sim b \Leftrightarrow$ $a-b \in N$. 
+
+\textbf{Factor Module}\\
+Let $R$ be a Ring, $M$ an $R$-module and $N$ a submodule of $M$. 
+
+Define $M / N$, as the factor module of $M$ by $N$ (or the quotient of $M$ by $N$), to be the set $(M / \sim)$ of all cosets of $N$ in $M$. 
+
+This becomes an $R$-module by introducing the operations of addition and multiplication as follows:
+$$
+\begin{aligned}
+(a+N) \dot{+}(b+N) & =(a+b)+N \\
+r(a+N) & =r a+N
+\end{aligned}
+$$
+for all $a, b \in M, r \in R$. 
+
+\textbf{Universal Property of Factor Modules}\\
+Let $R$ be a Ring, let $L$ and $M$ be $R$-modules, and $N$ a Submoduleof $M$.\\
+1) The mapping $can : M \rightarrow M / N$ sending a to $a+N$ for all $a \in M$ is a surjective $R$-homomorphism with kernel $N$.\\
+2) If $f: M \rightarrow L$ is an $R$-homomorphism with $f(N)=\left\{0_L\right\}$, so that $N \subseteq \operatorname{ker} f$, then there is a *unique homomorphism* $\bar{f}: M / N \rightarrow L$ such that $f=\bar{f} \circ can$.\\
+The second part of the theorem states that $f$ factorises uniquely through the canonical mapping to the factor whenever the submodule $N$ is sent to zero.
+
+\textbf{First Isomorphism Theorem for Modules}\\
+Let $R$ be a Ring and let $M$ and $N$ be $R$-modules. 
+Then every $R$-homomorphism $f: M \longrightarrow N$ induces an $R$-isomorphism
+$$
+\bar{f}: M / \operatorname{ker} f \xrightarrow{\sim} \operatorname{im} f .
+$$
+
+\textbf{Multilinear Form}\\
+Let $U_1, U_2, \ldots, U_n, W$ be vector spaces over a Field $F$, then a map
+$$
+H: U_1 \times U_2 \times \cdots \times U_n \rightarrow W
+$$
+is multilinear if it is linear in each of its entries separately.\\
+In the case $n=2$ this is exactly the definition of a Bilinear Form\\
+A multilinear form is alternating if it vanishes on every $n$-tuple of elements of $U$ that has at least two entries equal, in other words if:
+\begin{align*}
+&\left(\exists i \neq j \text { with } v_i=v_j\right)\\
+&\rightarrow H\left(v_1, \ldots, v_i, \ldots, v_j, \ldots, v_n\right)=0
+\end{align*}
+This is the same as writing, for any $\sigma \in \mathfrak{S}_n$
+$$
+H\left(v_{\sigma(1)}, \ldots, v_{\sigma(n)}\right)=\operatorname{sgn}(\sigma) H\left(v_1, \ldots, v_n\right)
+$$
+\textbf{Symmetric Group}\\
+The group of all permutations of the set $\{1,2, \ldots, n\}$, also known as \textit{Bijections} from $\{1,2, \ldots, n\}$ to itself, is denoted by $\mathfrak{S}_n$ and called the \textbf{$n$-th symmetric group}. 
+It is a group under \textit{composition}.\\
+It has $n !$ elements.\\
+A \textit{transposition} is a permutation that swaps two elements of the set and leaves all the others unchanged.\\
+- All transpositions are odd permutations and have length $2|i-j|-1$\\
+An \textit{inversion} of a permutation $\sigma \in \mathfrak{S}_n$ is a pair $(i, j)$ such that $1 \leqslant i<j \leqslant n$ and $\sigma(i)>\sigma(j)$.\\
+The number of inversions of the permutation $\sigma$ is called the \textit{length} of $\sigma$ and written $\ell(\sigma)$. In formulas:\\
+$$
+\ell(\sigma)=\mid\{(i, j): i<j \text { but } \sigma(i)>\sigma(j)\} \mid
+$$
+Length can also be counted from the number of crossings in a permutation diagram.
+The \textit{sign} of $\sigma$ is defined to be the parity of the number of inversions of $\sigma$. In formulas:\\
+$$
+\operatorname{sgn}(\sigma)=(-1)^{\ell(\sigma)}
+$$
+For each $n \in \mathbb{N}$ the sign of a permutation produces a group homomorphism $sgn : \mathfrak{S}_n \rightarrow\{+1,-1\}$ from the symmetric group to the two-element group of signs. 
+In formulas:\\
+$$
+\operatorname{sgn}(\sigma \tau)=\operatorname{sgn}(\sigma) \operatorname{sgn}(\tau) \quad \text { for all } \sigma, \tau \in \mathfrak{S}_n
+$$
+A permutation whose sign is +1 , in other words which has \textit{even length}, is called an \textit{even permutation}, while a permutation whose sign is -1 , in other words which has \textit{odd length}, is called an \textit{odd permutation}.\\
+For $n \in \mathbb{N}$, the set of even permutations in $\mathfrak{S}_n$ forms a subgroup of $\mathfrak{S}_n$ because it is the kernel of the group homomorphism $sgn : \mathfrak{S}_n \rightarrow\{+1,-1\}$. 
+This group is the \textit{alternating group} and is denoted $A_n$.
+
+\textbf{Determinant}\\
+\textit{Multilinear Form Characterisation}\\
+Let $F$ be a Field. The mapping
+\[
+\operatorname{det}: \operatorname{Mat}(n ; F) \rightarrow F
+\]
+is the \textit{unique} \textit{alternating} multilinear form on n-tuples of column vectors with values in $F$ that takes the value $1_F$ on the identity matrix.\\
+Or if we are to consider the matrix as an ordered list of $n$ column vectors
+\[
+\operatorname{det}: F^n \times \cdots \times F^n \rightarrow F,\left(v_1, \ldots, v_n\right) \mapsto \operatorname{det}\left(v_1|\cdots| v_n\right)
+\]
+\textit{Leibniz Characterisation}\\
+Let $R$ be a commutative Ring and $n \in \mathbb{N}$. \\
+The determinant is a mapping $det : \operatorname{Mat}(n ; R) \rightarrow R$ from Square Matrices with coefficients in $R$ to the ring $R$ that is given by the following formula:
+\[
+A \mapsto \operatorname{det}(A)=\sum_{\sigma \in \mathfrak{S}_n} \operatorname{sgn}(\sigma) a_{1 \sigma(1)} \ldots a_{n \sigma(n)}
+\]
+The sum is over all permutations of $n$, and the coefficient $\operatorname{sgn}(\sigma)$ is the sign of the permutation $\sigma$. \\
+The degenerate case $n=0$ assigns the value 1 as the determinant of the "empty matrix".\\
+\textit{Laplace’s Expansion of the Determinant}\\
+Let $A=\left(a_{i j}\right)$ be an $(n \times n)$-matrix with entries from a commutative ring $R$. For a fixed $i$ the $i$-th row expansion of the determinant is
+\[
+\operatorname{det}(A)=\sum_{j=1}^n a_{i j} C_{i j}
+\]
+and for a fixed $j$ the $j$-th column expansion of the determinant is
+\[
+\operatorname{det}(A)=\sum_{i=1}^n a_{i j} C_{i j}
+\]
+\textit{Multiplicativity}\\
+Let $R$ be a commutative ring and let $A, B \in$ $\operatorname{Mat}(n ; R)$. Then
+\[
+\operatorname{det}(A B)=\operatorname{det}(A) \operatorname{det}(B) \text {. }
+\]
+\textit{Determinantal Criterion for Invertibility} \\
+The determinant of a square matrix with entries in a field $F$ is non-zero if and only if the matrix is invertible. \\
+A square matrix with entries in a commutative ring $R$ is invertible if and only if its determinant is a unit in $R$. \\
+That is, $A \in \operatorname{Mat}(n ; R)$ is invertible if and only if $\operatorname{det}(A) \in R^{\times}$.
+\textit{Inverse of the Determinant}\\
+If $A$ is invertible then $\operatorname{det}\left(A^{-1}\right)=\operatorname{det}(A)^{-1}$. 
+If $B$ is a square matrix $B$ then
+\[
+\operatorname{det}\left(A^{-1} B A\right)=\operatorname{det}(B)
+\]
+\textit{Determinant of an Endomorphism}\\
+The determinant of an representative matrix ${ }_{\mathcal{A}}[f]_{\mathcal{A}}$ is independent of the choice of basis $\mathcal{A}$. Therefore the determinant is in fact defined only by the endomorphism $f$. \\
+\textit{Transpose}
+\[
+\operatorname{det}\left(A^{\top}\right)=\operatorname{det}(A)
+\]
+\textit{Cramer's Rule}\\
+Let $A$ be an $(n \times n)$-matrix with entries in a commutative ring $R$. $adj$ is the Adjugate Matrix. Then
+\[
+A \cdot \operatorname{adj}(A)=(\operatorname{det} A) I_n
+\]
+\textit{Jacobi's Formula}\\
+Let $A=\left(a_{i j}\right)$ where the coefficients $a_{i j}=a_{i j}(t)$ are functions of $t$. Then
+\[
+\frac{d}{d t} \operatorname{det} A=\operatorname{Tr} \operatorname{Adj} A \frac{d A}{d t} .
+\]
+
+\textbf{Cofactor of a Matrix}\\
+Let $A \in \operatorname{Mat}(n ; R)$ for some commutative Ring $R$ and natural number $n$. Let $i$ and $j$ be integers between 1 and $n$. \\
+Then the $(i, j)$ cofactor of $A$ is $$C_{i j}=(-1)^{i+j} \operatorname{det}(A\langle i, j\rangle)$$ where $A\langle i, j\rangle$ is the matrix obtained from $A$ be deleting the $i$-th row and the $j$-th column.
+
+\textbf{Adjugate}\\
+Let $A$ be an $(n \times n)$-matrix with entries in a commutative Ring $R$. 
+The adjugate matrix $\operatorname{adj}(A)$ is the $(n \times n)$-matrix whose entries are $\operatorname{adj}(A)_{i j}=C_{j i}$ where $C_{j i}$ is the $(j, i)$-cofactor.
+
+\textbf{Real Inner Product}\\
+Let $V$ be a Vector Space over $\mathbb{R}$. An inner product on $V$ is a mapping
+$$
+(-,-): V \times V \rightarrow \mathbb{R}
+$$
+that satisfies the following for all $\vec{x}, \vec{y}, \vec{z} \in V$ and $\lambda, \mu \in \mathbb{R}$ :\\
+1) $(\lambda \vec{x}+\mu \vec{y}, \vec{z})=\lambda(\vec{x}, \vec{z})+\mu(\vec{y}, \vec{z})$\\
+2) $(\vec{x}, \vec{y})=(\vec{y}, \vec{x})$\\
+3) $(\vec{x}, \vec{x}) \geqslant 0$, with equality if and only if $\vec{x}=\overrightarrow{0}$\\
+A real inner product space is a real vector space endowed with an inner product.\\
+A real inner product space is necessarily a Symmetric Bilinear Form.\\
+A finite-dimensional real inner product space is a Euclidean Vector Space.\\
+Every finite dimensional inner product space has an orthonormal basis. \\
+
+\textbf{Complex Inner Product}\\
+Let $V$ be a Vector Space over $\mathbb{C}$. An inner product on $V$ is a mapping
+$$
+(-,-): V \times V \rightarrow \mathbb{C}
+$$
+that satisfies the following for all $\vec{x}, \vec{y}, \vec{z} \in V$ and $\lambda, \mu \in \mathbb{C}$ :\\
+1) $(\lambda \vec{x}+\mu \vec{y}, \vec{z})=\lambda(\vec{x}, \vec{z})+\mu(\vec{y}, \vec{z})$\\
+2) $(\vec{x}, \vec{y})=\overline{(\vec{y}, \vec{x})}$\\
+3) $(\vec{x}, \vec{x}) \geqslant 0$, with equality if and only if $\vec{x}=\overrightarrow{0}$\\
+Here $\bar{z}$ denotee the *complex conjugate* of $z$. \\
+A complex inner product space is a complex vector space endowed with an inner product.\\
+Complex inner product spaces are Skew-Linear in their second variable, also known as sesquilinear.
+
+\textbf{Inner Product Norm}\\
+In a real or complex inner product space the length or inner product norm $\|\vec{v}\| \in \mathbb{R}$ of a vector $\vec{v}$ is defined as the non-negative square root
+$$
+\|\vec{v}\|=\sqrt{(\vec{v}, \vec{v})}
+$$
+Two vectors $\vec{v}, \vec{w}$ are orthogonal and we write
+$$
+\vec{v} \perp \vec{w}
+$$
+if and only if $(\vec{v}, \vec{w})=0$. We say that $\vec{v}$ and $\vec{w}$ are at right-angles to each other. \\
+We write $S \perp T$ as a shorthand for $\vec{v} \perp \vec{w}$ for all $\vec{v} \in S$ and $\vec{w} \in T$.\\
+Vectors whose length is 1 are called units.\\
+
+\textbf{Orthogonal Complement}\\
+Let $V$ be an Inner Product Space and let $T \subseteq V$ be an arbitrary subset. Define
+$$
+T^{\perp}=\{\vec{v} \in V: \vec{v} \perp \vec{t} \text { for all } \vec{t} \in T\},
+$$
+calling this set the orthogonal to $T$.
+If $T$ is a subspace it is the orthogonal complement to $V$. 
+
+\textbf{Orthogonal Matrix}\\
+An orthogonal matrix is an $(n \times n)$-matrix $P$ with real entries such that $P^{\top} P=$ $I_n$. 
+In other words, an orthogonal matrix is a square matrix $P$ with real entries such that $P^{-1}=P^{\top}$.
+
+
+\textbf{Unitary Matrix}\\
+An unitary matrix is an $(n \times n)$-matrix $P$ with complex entries such that $\bar{P}^{\top} P=I_n$. \\
+In other words, a unitary matrix is a square matrix $P$ with complex entries such that $P^{-1}=$ $\bar{P}^{\top}$.
+
+\textbf{Gram-Schmidt Process}\\
+Given nn arbitrary linearly independent ordered subset $\vec{v}_1, \vec{v}_2, \ldots$ of an inner product space $V$. \\
+Our aim is to produce the elements of $(\vec{w}_i)$, an orthonormal family in $V$. \\
+1. Take the first element $\vec{v}_1$ and normalize it to have length 1 . Let this be the first element $\vec{w}_1$.\\
+2. For each subsequent vector $\vec{v}_i$ from the subset:\\
+	- Subtract the orthogonal projection of $\vec{v}_i$ onto the space $\langle \vec{w}_1, \vec{w}_2, \ldots, \vec{w}_{i-1}\rangle$.\\
+	- Normalize the resulting vector to have length 1 . Let this be the $i$ th element $\vec{w}_i$ of the orthonormal family.\\
+Repeat this process until you've dealt with all vectors $\vec{v}_1, \vec{v}_2, \ldots$\\
+
+\textbf{Adjoint Endomorphisms}\\
+Let $V$ be an Inner Product Space. Then two Endomorphisms $T, S: V \rightarrow V$ are called adjoint to one another if the following holds for all $\vec{v}, \vec{w} \in V$ :
+$$
+(T \vec{v}, \vec{w})=(\vec{v}, S \vec{w})
+$$
+In this case I will write $S=T^*$ and call $S$ the adjoint of $T$.
+Any endomorphism has at most one adjoint. 
+Let $V$ be a finite dimensional inner product space. Let $T: V \rightarrow V$ be an endomorphism. Then $T^*$ exists. That is, there exists a unique linear mapping $T^*: V \rightarrow V$ such that for all $\vec{v}, \vec{w} \in V$
+$$
+(T \vec{v}, \vec{w})=\left(\vec{v}, T^* \vec{w}\right)
+$$
+
+\textbf{Self-Adjoint}\\
+An Endomorphism of an Inner Product Space $T: V \rightarrow V$ is self-adjoint if it equals its own adjoint that is if $T^*=T$.
+Let $T: V \rightarrow V$ be a self-adjoint linear mapping on an inner product space $V$.\\
+1) Every eigenvalue of $T$ is real.\\
+2) If $\lambda$ and $\mu$ are distinct eigenvalues of $T$ with corresponding eigenvectors $\vec{v}$ and $\vec{w}$, then $(\vec{v}, \vec{w})=0$.\\
+3) T has an eigenvalue.
+
+\textbf{Hermitian Matrices}\\
+A real $(n \times n)$-matrix $A$ describes a self-adjoint mapping on the standard inner product space $\mathbb{R}^n$ precisely when $A$ is symmetric, that is when $A^{\top}=A$. \\
+A complex $(n \times n)$-matrix $A$ describes a self-adjoint mapping on the standard inner product space $\mathbb{C}^n$ precisely when $A=\bar{A}^{\top}$ holds. \\
+Such matrices are called hermitian.
+
+\textbf{Conjugate Transpose}\\
+The conjugate transpose $\bar{A}^T$ is the matrix obtained from $A$ by first conjugating each entry and then transposing the resulting matrix. 
+
+\textbf{Raleigh Quotient}\\
+$V$ is a finite dimensional real Inner Product Space. 
+The Raleigh Quotient is the real-valued function defined 
+\begin{align}
+R: V \backslash\{\overrightarrow{0}\} &\rightarrow \mathbb{R}\\
+\vec{v} &\mapsto R(\vec{v})=\frac{(T \vec{v}, \vec{v})}{(\vec{v}, \vec{v})}\\
+\end{align}
+
+\textbf{Spectral Theorem}\\
+\textit{For Self-Adjoint Endomorphisms}\\
+Let $V$ be a finite dimensional Inner Product Space and let $T: V \rightarrow V$ be a self-adjoint linear mapping. 
+Then $V$ has an Orthonormal Basis consisting of eigenvectors of $T$.\\
+\textit{For Real Symmetric Matrices}\\
+Let $A$ be a real $(n \times n)$ symmetric matrix. Then there is an $(n \times n)$-orthogonal matrix $P$ such that
+$$
+P^{\top} A P=P^{-1} A P=\operatorname{diag}\left(\lambda_1, \ldots, \lambda_n\right)
+$$
+where $\lambda_1, \ldots, \lambda_n$ are the (necessarily real) eigenvalues of $A$, repeated according to their multiplicity as roots of the characteristic polynomial of $A$.\\
+\textit{For Hermitian Matrices}\\
+Let A be $a(n \times n)$-hermitian matrix. Then there is an $(n \times n)$-unitary matrix $P$ such that
+$$
+\bar{P}^{\top} A P=P^{-1} A P=\operatorname{diag}\left(\lambda_1, \ldots, \lambda_n\right)
+$$
+where $\lambda_1, \ldots, \lambda_n$ are the (necessarily real) eigenvalues of $A$, repeated according to their multiplicity as roots of the characteristic polynomial of $A$.
+
+\textbf{Exponential Mapping}\\
+$$
+\begin{aligned}
+\exp : \operatorname{Mat}(n ; \mathbb{C}) & \rightarrow \operatorname{Mat}(n ; \mathbb{C}) \\
+A & \mapsto \sum_{k=0}^{\infty} \frac{1}{k !} A^k
+\end{aligned}
+$$
+This mapping plays a central role in describing the solutions to linear differential equations with constant coefficients. 
+If $A \in \operatorname{Mat}(n ; \mathbb{C})$ is a square matrix and $\vec{c} \in \mathbb{C}^n$ a column vector, then there exists exactly one differentiable mapping $\gamma: \mathbb{R} \rightarrow \mathbb{C}^n$ with initial value $\gamma(0)=\vec{c}$ and which satisfies $\dot{\gamma}(t)=A \gamma(t)$ for all $t \in \mathbb{R}$ : it is the mapping
+$$
+\gamma(t)=\exp (t A) \vec{c} .
+$$
+
+\textbf{Cayley-Hamilton}\\
+Let $A \in \operatorname{Mat}(n ; R)$ be a square matrix with entries in a commutative Ring $R$. Then evaluating its characteristic polynomial $\chi_A(x) \in R[x]$ at the matrix $A$ gives zero.
+
+\textbf{JNF}\\
+Let $F$ be an algebraically closed field. Let $V$ be a finite dimensional vector space and let $\phi: V \rightarrow V$ be an endomorphism of $V$ with characteristic polynomial
+$$
+\begin{aligned}
+&\chi_\phi(x)=\\
+&\left(x-\lambda_1\right)^{a_1}\left(x-\lambda_2\right)^{a_2} \ldots\left(x-\lambda_s\right)^{a_s} \in F[x]\\
+&\qquad\qquad\qquad\qquad\qquad, a_i \geqslant 1, \sum_{i=1}^s a_i=n,
+\end{aligned}
+$$
+for distinct $\lambda_1, \lambda_2, \ldots, \lambda_s \in F$. \\
+Then there exists an ordered basis $\mathcal{B}$ of $V$ such that the matrix of $\phi$ with respect to the basis $\mathcal{B}$ is block diagonal with Jordan Blocks on the diagonal
+$$
+\begin{aligned}
+{ }_{\mathcal{B}}[\phi]_{\mathcal{B}}=\operatorname{diag} & (J(r_{11}, \lambda_1), \ldots, J(r_{1 m_1}, \lambda_1), \\
+&J(r_{21}, \lambda_2), \ldots, J(r_{s m_s}, \lambda_s)\\
+\end{aligned}
+$$
+with $r_{11}, \ldots, r_{1 m_1}, r_{21}, \ldots, r_{s m_s} \geqslant 1$ such that
+$$
+a_i=r_{i 1}+r_{i 2}+\cdots+r_{i m_i}(1 \leqslant i \leqslant s) .
+$$
+
+\textbf{Kronecker Delta}\\
+The Kronecker Delta is defined:$$\delta_j^i= \begin{cases}1 & \text { if } i=j \\ 0 & \text { if } i \neq j\end{cases}$$
+
+\end{multicols*}
+\end{document}
